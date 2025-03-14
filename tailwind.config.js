@@ -3,16 +3,18 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        neon: {
-          green: 'var(--neon-green)',
-          blue: 'var(--electric-blue)',
+        brand: {
+          blue: 'var(--brand-blue)',
+          green: 'var(--brand-green)',
+          orange: 'var(--brand-orange)',
         },
-        coral: 'var(--vibrant-coral)',
         accent: {
-          purple: 'var(--bright-purple)',
+          glow: 'var(--accent-glow)',
+          highlight: 'var(--accent-highlight)',
         },
         mountain: {
           50: '#F8FAFC',
@@ -26,23 +28,11 @@ module.exports = {
           800: '#1E293B',
           900: '#0F172A',
         },
-        forest: {
-          50: '#ECFDF5',
-          100: '#D1FAE5',
-          200: '#A7F3D0',
-          300: '#6EE7B7',
-          400: '#34D399',
-          500: '#10B981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065F46',
-          900: '#064E3B',
-        },
       },
       fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
-        display: ['Quicksand', 'sans-serif'],
-        accent: ['Bubblegum Sans', 'cursive'],
+        sans: ['Inter var', 'system-ui', 'sans-serif'],
+        display: ['Quicksand', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
@@ -52,6 +42,7 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
+        'brand-gradient': 'linear-gradient(135deg, var(--brand-gradient-start), var(--brand-gradient-middle), var(--brand-gradient-end))',
       },
     },
   },
@@ -61,4 +52,3 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
   ],
 }
-

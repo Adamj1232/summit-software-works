@@ -3,42 +3,82 @@
 @tailwind utilities;
 
 :root {
-  --neon-green: #39FF14;
-  --electric-blue: #00FFFF;
-  --vibrant-coral: #FF6B6B;
-  --bright-purple: #9D4EDD;
+  /* Brand Colors */
+  --brand-blue: #0066FF;
+  --brand-green: #00FFB2;
+  --brand-purple: #9747FF;
+  
+  /* Gradient Colors */
+  --brand-gradient-start: var(--brand-blue);
+  --brand-gradient-middle: var(--brand-green);
+  --brand-gradient-end: var(--brand-purple);
+  
+  /* Accent Colors */
+  --accent-glow: var(--brand-blue);
+  --accent-highlight: var(--brand-green);
+  
+  /* UI Colors */
+  --ui-background: #ffffff;
+  --ui-foreground: #1e293b;
+  --ui-muted: #64748b;
+  --ui-accent: var(--brand-blue);
+}
+
+/* Dark mode colors */
+.dark {
+  --ui-background: #0f172a;
+  --ui-foreground: #f8fafc;
+  --ui-muted: #94a3b8;
+  --ui-accent: var(--brand-green);
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-green to-brand-purple;
   }
   
-  .card {
-    @apply p-6 rounded-xl transition-all duration-300;
+  .brand-gradient {
+    @apply bg-gradient-to-r from-brand-blue via-brand-green to-brand-purple;
   }
-
+  
+  .brand-gradient-hover {
+    @apply hover:bg-gradient-to-r hover:from-brand-purple hover:via-brand-green hover:to-brand-blue;
+  }
+  
   .btn-primary {
-    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+    @apply px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300
+    bg-gradient-to-r from-brand-blue via-brand-green to-brand-purple
+    hover:from-brand-purple hover:via-brand-green hover:to-brand-blue
+    hover:shadow-lg hover:shadow-brand-blue/20;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300;
+    @apply px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300
+    border-brand-blue text-brand-blue
+    hover:bg-brand-blue/10 hover:border-brand-purple hover:text-brand-purple;
+  }
+
+  .card {
+    @apply bg-white dark:bg-mountain-800/50 rounded-xl shadow-lg 
+    p-6 transition-all duration-300 
+    hover:shadow-xl hover:shadow-brand-blue/10
+    dark:hover:shadow-brand-purple/20;
   }
 }
 
-/* Enhanced Animations */
+/* Custom Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(5deg); }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 @keyframes pulse-glow {
   0%, 100% { 
-    filter: brightness(1) drop-shadow(0 0 0px var(--neon-green));
+    filter: drop-shadow(0 0 0.5rem var(--brand-blue));
   }
   50% { 
-    filter: brightness(1.2) drop-shadow(0 0 10px var(--neon-green));
+    filter: drop-shadow(0 0 1rem var(--brand-purple));
   }
 }
 
@@ -48,6 +88,25 @@
   100% { background-position: 0% 50%; }
 }
 
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Smooth transitions */
+.page-transition {
+  @apply transition-all duration-300;
+}
+
+/* Enhanced Animations */
 @keyframes bounce-subtle {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
@@ -92,19 +151,6 @@
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-2px) rotate(-1deg); }
   75% { transform: translateX(2px) rotate(1deg); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
 }
 
 .animate-bounce-subtle {

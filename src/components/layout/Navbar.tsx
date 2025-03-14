@@ -1,31 +1,28 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import Logo from '../Logo';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
     { name: 'About', path: '/about' },
+    { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
   ];
 
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   return (
-    <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-display font-bold text-mountain-800"
-              >
-                Summit<span className="text-forest-500">Software</span>
-              </motion.div>
-            </Link>
-          </div>
+    <nav className="fixed w-full z-50 bg-white/80 dark:bg-mountain-900/80 backdrop-blur-sm border-b border-mountain-200 dark:border-mountain-800">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
+          <Logo />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -33,74 +30,106 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-mountain-600 hover:text-forest-500 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className={`relative group ${
+                  isActive(item.path)
+                    ? 'text-brand-blue dark:text-accent-glow'
+                    : 'text-mountain-600 hover:text-mountain-900 dark:text-mountain-400 dark:hover:text-white'
+                }`}
+              >
+                <span className="relative">
+                  {item.name}
+                  <motion.span
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-brand-gradient transform origin-left
+                      ${isActive(item.path) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                    initial={false}
+                    animate={{
+                      scaleX: isActive(item.path) ? 1 : 0
+                    }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </span>
+              </Link>
+            ))}
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary"
+              >
+                Get Started
+              </motion.button>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-mountain-100 dark:hover:bg-mountain-800"
+          >
+            <div className="w-6 h-6 flex flex-col justify-around">
+              <motion.span
+                animate={{
+                  rotate: isOpen ? 45 : 0,
+                  y: isOpen ? 8 : 0,
+                }}
+                className="w-full h-0.5 bg-mountain-600 dark:bg-mountain-400 transform origin-left"
+              />
+              <motion.span
+                animate={{
+                  opacity: isOpen ? 0 : 1,
+                }}
+                className="w-full h-0.5 bg-mountain-600 dark:bg-mountain-400"
+              />
+              <motion.span
+                animate={{
+                  rotate: isOpen ? -45 : 0,
+                  y: isOpen ? -8 : 0,
+                }}
+                className="w-full h-0.5 bg-mountain-600 dark:bg-mountain-400 transform origin-left"
+              />
+            </div>
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? 'auto' : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        className="md:hidden overflow-hidden bg-white dark:bg-mountain-900"
+      >
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex flex-col space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className={`py-2 ${
+                  isActive(item.path)
+                    ? 'text-brand-blue dark:text-accent-glow'
+                    : 'text-mountain-600 hover:text-mountain-900 dark:text-mountain-400 dark:hover:text-white'
+                }`}
               >
                 {item.name}
               </Link>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="btn btn-primary"
-            >
-              Get in Touch
-            </motion.button>
-          </div>
-
-          {/* Mobile Navigation Button */}
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-mountain-600 hover:text-mountain-800 hover:bg-mountain-100 focus:outline-none"
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <svg
-                className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      <motion.div
-        className={`${isOpen ? 'block' : 'hidden'} md:hidden`}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -10 }}
-        transition={{ duration: 0.2 }}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-          {navItems.map((item) => (
             <Link
-              key={item.name}
-              to={item.path}
-              className="block px-3 py-2 rounded-md text-base font-medium text-mountain-600 hover:text-forest-500 hover:bg-mountain-50"
+              to="/contact"
               onClick={() => setIsOpen(false)}
+              className="btn-primary text-center"
             >
-              {item.name}
+              Get Started
             </Link>
-          ))}
-          <button className="w-full btn btn-primary mt-4">
-            Get in Touch
-          </button>
+          </div>
         </div>
       </motion.div>
     </nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;
