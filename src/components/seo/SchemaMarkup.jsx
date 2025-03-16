@@ -16,28 +16,7 @@ const SchemaMarkup = ({ page, data }) => {
 
 export default SchemaMarkup;
 
-// Implementation in page components
-// Example usage in HomePage.jsx:
 
-import React from 'react';
-import MetaTags from '../components/seo/MetaTags';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
-
-const HomePage = () => {
-  return (
-    <>
-      <MetaTags 
-        title="Innovative Web & Software Development"
-        description="Summit Software Works specializes in creating cutting-edge web applications, custom software solutions, and web3 development. Elevate your digital presence with our expert team."
-        keywords="web development, software design, web3, React, Node.js, SEO optimization, UI/UX design"
-        url="/"
-      />
-      <SchemaMarkup page="home" />
-      
-      {/* Rest of the page content */}
-    </>
-  );
-};
 
 // Additional SEO Best Practices implemented throughout the site:
 

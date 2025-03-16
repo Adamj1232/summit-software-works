@@ -24,8 +24,8 @@ const Layout = ({ children }: LayoutProps) => {
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <h4 className="text-lg font-semibold mb-4 text-center">Quick Links</h4>
+              <ul className="space-y-2 flex flex-col justify-center items-center">
                 <li>
                   <a href="/projects" className="text-mountain-200 hover:text-forest-400 transition-colors">
                     Projects
@@ -44,8 +44,8 @@ const Layout = ({ children }: LayoutProps) => {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Connect</h4>
-              <div className="flex space-x-4">
+              <h4 className="text-lg font-semibold mb-4 text-center">Connect</h4>
+              <div className="flex space-x-4 justify-center">
                 <a
                   href="https://github.com"
                   target="_blank"

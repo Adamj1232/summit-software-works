@@ -20,19 +20,25 @@ const Home = () => {
       title: "Web Development",
       description: "Full-stack solutions with modern frameworks and technologies that deliver exceptional user experiences.",
       icon: "💻",
-      color: "from-blue-500 to-purple-500"
+      color: "from-blue-500 to-forest-500"
     },
     {
       title: "Software Design",
       description: "Custom software applications engineered to solve complex problems and streamline operations.",
       icon: "🔧",
-      color: "from-green-500 to-teal-500"
+      color: "from-forest-500 to-forest-600"
     },
     {
       title: "Web3 Integration",
       description: "Blockchain solutions, smart contracts, and decentralized applications for the future of the internet.",
       icon: "🔗",
-      color: "from-orange-500 to-pink-500"
+      color: "from-forest-400 to-blue-500"
+    },
+    {
+      title: "AI Interface Development",
+      description: "Cutting-edge AI-powered interfaces and integrations that bring intelligent automation and natural interactions to your applications.",
+      icon: "🤖",
+      color: "from-blue-400 to-purple-500"
     }
   ];
 
@@ -123,15 +129,15 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-mountain-800 to-forest-800">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-forest-800 to-mountain-800">
               Our Expertise
             </h2>
-            <p className="text-xl text-mountain-600 max-w-2xl mx-auto">
+            <p className="text-xl text-forest-700 max-w-2xl mx-auto">
               We deliver comprehensive solutions that help businesses thrive in the digital landscape.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -141,7 +147,11 @@ const Home = () => {
                 viewport={{ once: true }}
                 onHoverStart={() => setHoveredService(index)}
                 onHoverEnd={() => setHoveredService(null)}
-                className="relative group"
+                className={`relative group ${
+                  services.length % 2 !== 0 && index === services.length - 1 
+                    ? 'md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-[400px]' 
+                    : ''
+                }`}
               >
                 <motion.div
                   className={`card hover:shadow-2xl transition-all duration-300 backdrop-blur-sm 
@@ -149,7 +159,7 @@ const Home = () => {
                 >
                   <motion.div
                     className="text-6xl mb-6"
-                    animate={hoveredService === index ? { scale: [1, 1.2, 1], rotate: [0, 10, 0] } : {}}
+                    animate={hoveredService === index ? { scale: [1, 1.4, 1], rotate: [0, 20, 0] } : {}}
                   >
                     {service.icon}
                   </motion.div>
@@ -176,7 +186,7 @@ const Home = () => {
         <motion.div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle at center, rgba(5, 122, 85, 0.15) 0%, transparent 70%)",
             transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
           }}
         />
@@ -192,18 +202,18 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               Ready to Transform Your Digital Vision?
             </h2>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-blue-400">
               Let's create something extraordinary together.
             </p>
             <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative px-8 py-4 bg-white text-forest-900 rounded-lg font-semibold overflow-hidden group"
+                className="relative px-8 py-4 bg-white rounded-lg font-semibold overflow-hidden group"
               >
-                <span className="relative z-10">Start the Conversation</span>
+                <span className="relative z-10 text-forest-800">Start the Conversation</span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-200 to-purple-200"
+                  className="absolute inset-0 bg-gradient-to-r from-forest-200 to-blue-200"
                   initial={{ x: "100%" }}
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
