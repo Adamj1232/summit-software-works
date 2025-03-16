@@ -1,3 +1,35 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemaps
+Sitemap: https://summitsoftwareworks.com/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 10
+
+# Allow all bots to access JavaScript and CSS
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+
+# Prevent crawling of certain directories
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /draft/
+
+# Block specific bots that might overload the server
+User-agent: AhrefsBot
+Crawl-delay: 20
+
+User-agent: MJ12bot
+Crawl-delay: 20
+
+User-agent: SemrushBot
+Crawl-delay: 20
