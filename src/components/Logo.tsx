@@ -6,9 +6,10 @@ interface LogoProps {
   className?: string;
   size?: 'small' | 'default' | 'large';
   showText?: boolean;
+  animate?: boolean;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = '', size = 'default', showText = false }) => {
+const Logo: React.FC<LogoProps> = ({ className = '', size = 'default', showText = false, animate = false }) => {
   const sizeClasses = {
     small: 'h-8',
     default: 'h-12',
@@ -43,7 +44,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'default', showText 
           src={logoIcon}
           alt="Summit Software Works Logo" 
           className={`${sizeClasses[size]} w-auto relative`}
-          animate={floatAnimation}
+          animate={animate ? floatAnimation : undefined}
         />
       </motion.div>
       {showText && (

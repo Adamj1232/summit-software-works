@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../Logo';
@@ -60,10 +60,26 @@ const GetStartedButton = memo(({ className = '' }: { className?: string }) => (
   </Link>
 ));
 
+const useIsDesktop = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    setIsDesktop(mediaQuery.matches);
+
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  return isDesktop;
+};
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -82,11 +98,11 @@ const Navbar = () => {
           isScrolled
             ? 'bg-mountain-900/98 backdrop-blur-xl shadow-lg border-b border-white/10'
             : 'bg-mountain-900/95 backdrop-blur-lg'
-        }`}
+        } ${!isDesktop ? 'py-1' : ''}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            <Logo size="large" className="py-2" />
+            <Logo size={isDesktop ? "large" : "default"} className="py-2" animate={isDesktop}/>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">

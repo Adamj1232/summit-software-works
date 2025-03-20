@@ -44,7 +44,7 @@ const ORGANIZATION_SCHEMA: SchemaMarkup = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-555-123-4567",
+    telephone: "+1-303.918.2290",
     contactType: "customer service",
     email: "info@summitsoftwareworks.com"
   },
