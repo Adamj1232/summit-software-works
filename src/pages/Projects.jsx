@@ -1,17 +1,99 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+
+const ProjectCard = ({ project, onClick }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true }}
+    className="relative group"
+    onClick={() => onClick(project)}
+  >
+    <motion.div
+      className="absolute -inset-2 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+      style={{
+        background: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
+      }}
+    />
+    <motion.div
+      className="card group/card cursor-pointer relative bg-white/80 backdrop-blur-sm"
+      whileHover={{ y: -5 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <div className="relative aspect-w-16 aspect-h-9 mb-6 rounded-lg overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="object-cover transform group-hover/card:scale-110 transition-transform duration-500"
+          onError={(e) => {
+            e.target.src = `https://images.unsplash.com/photo-${Math.floor(Math.random() * 1000)}?auto=format&fit=crop&w=800&q=80`;
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-mountain-900/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+      </div>
+      
+      <motion.h3
+        className="text-xl font-semibold mb-3 text-mountain-800 bg-clip-text text-transparent bg-gradient-to-r"
+        style={{
+          backgroundImage: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
+        }}
+      >
+        {project.title}
+      </motion.h3>
+      
+      <p className="text-mountain-600 mb-4">
+        {project.description}
+      </p>
+      
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag, tagIndex) => (
+          <motion.span
+            key={tagIndex}
+            className="px-3 py-1 text-sm rounded-full"
+            style={{
+              background: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
+              color: 'white',
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {tag}
+          </motion.span>
+        ))}
+      </div>
+      
+      <Link
+        to={project.link}
+        className="inline-flex items-center font-semibold transition-colors"
+        style={{
+          color: project.color.split(' ')[1],
+        }}
+      >
+        <span>View Project</span>
+        <motion.span
+          className="ml-2"
+          animate={{ x: [0, 4, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          →
+        </motion.span>
+      </Link>
+    </motion.div>
+  </motion.div>
+);
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     const { clientX, clientY } = e;
     const moveX = (clientX - window.innerWidth / 2) * 0.05;
     const moveY = (clientY - window.innerHeight / 2) * 0.05;
     setMousePosition({ x: moveX, y: moveY });
-  };
+  }, []);
 
   const projects = [
     {
@@ -112,86 +194,7 @@ const Projects = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative group"
-                onClick={() => setSelectedProject(project)}
-              >
-                <motion.div
-                  className="absolute -inset-2 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-                  style={{
-                    background: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
-                  }}
-                />
-                <motion.div
-                  className="card group/card cursor-pointer relative bg-white/80 backdrop-blur-sm"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="relative aspect-w-16 aspect-h-9 mb-6 rounded-lg overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="object-cover transform group-hover/card:scale-110 transition-transform duration-500"
-                      onError={(e) => {
-                        e.target.src = `https://images.unsplash.com/photo-${index + 1}?auto=format&fit=crop&w=800&q=80`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-mountain-900/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
-                  </div>
-                  
-                  <motion.h3
-                    className="text-xl font-semibold mb-3 text-mountain-800 bg-clip-text text-transparent bg-gradient-to-r"
-                    style={{
-                      backgroundImage: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
-                    }}
-                  >
-                    {project.title}
-                  </motion.h3>
-                  
-                  <p className="text-mountain-600 mb-4">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <motion.span
-                        key={tagIndex}
-                        className="px-3 py-1 text-sm rounded-full"
-                        style={{
-                          background: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
-                          color: 'white',
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {tag}
-                      </motion.span>
-                    ))}
-                  </div>
-                  
-                  <Link
-                    to={project.link}
-                    className="inline-flex items-center font-semibold transition-colors"
-                    style={{
-                      color: project.color.split(' ')[1],
-                    }}
-                  >
-                    <span>View Project</span>
-                    <motion.span
-                      className="ml-2"
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      →
-                    </motion.span>
-                  </Link>
-                </motion.div>
-              </motion.div>
+              <ProjectCard key={index} project={project} onClick={setSelectedProject} />
             ))}
           </div>
         </div>
@@ -309,4 +312,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;

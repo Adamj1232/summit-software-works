@@ -2,7 +2,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import logoIcon from '../assets/brand/logo-icon-transparent_bg1.png';
 
-const Logo = ({ className = '', size = 'default' }) => {
+interface LogoProps {
+  className?: string;
+  size?: 'small' | 'default' | 'large';
+  showText?: boolean;
+}
+
+const Logo: React.FC<LogoProps> = ({ className = '', size = 'default', showText = false }) => {
   const sizeClasses = {
     small: 'h-8',
     default: 'h-12',
@@ -40,6 +46,11 @@ const Logo = ({ className = '', size = 'default' }) => {
           animate={floatAnimation}
         />
       </motion.div>
+      {showText && (
+        <span className="ml-3 text-xl font-bold text-white">
+          Summit<span className="text-accent-glow">Software</span>
+        </span>
+      )}
     </Link>
   );
 };

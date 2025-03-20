@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
+:root {
+  --brand-blue: #3B82F6;
+  --brand-green: #10B981;
+  --brand-orange: #F59E0B;
+  --accent-glow: #60A5FA;
+  --accent-highlight: #3B82F6;
+  --brand-gradient-start: #3B82F6;
+  --brand-gradient-middle: #10B981;
+  --brand-gradient-end: #F59E0B;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

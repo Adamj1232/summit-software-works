@@ -138,8 +138,8 @@ const Navbar = () => {
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
                 className="fixed right-0 top-0 bottom-0 w-80 bg-mountain-900/98 border-l border-white/10 z-50 shadow-xl md:hidden"
               >
-                <div className="flex flex-col h-full">
-                  <div className="flex justify-between items-center p-4 border-b border-white/10">
+                <div className="flex flex-col h-full bg-mountain-900/95">
+                  <div className="flex justify-between items-center p-4 pb-1 border-b border-white/10 bg-mountain-900/95">
                     <Logo size="small" />
                     <button
                       onClick={closeMobileMenu}
@@ -158,7 +158,7 @@ const Navbar = () => {
                       </svg>
                     </button>
                   </div>
-                  <nav className="flex-1 px-4 py-6 space-y-2">
+                  <nav className="flex-1 px-4 py-6 space-y-2 bg-mountain-900/95">
                     {navItems.map((item) => (
                       <MobileNavLink
                         key={item.path}
