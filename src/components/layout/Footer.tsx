@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo';
+// import { FaLinkedin, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
@@ -13,18 +14,18 @@ const Footer: FC = () => {
       <div className="container mx-auto px-6 pt-16 pb-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div className="md:col-span-1">
-            <Logo size="large" className="mb-6" />
+          <div className="md:col-span-1 w-full flex-col justify-center flex">
+            <Logo size="xxxl" className="mb-6 flex justify-center" />
             <p className="text-white/80 mb-6 font-medium">
               Building innovative digital solutions for businesses ready to reach new heights.
             </p>
-            <div className="flex space-x-4">
-              {/* Social Media Links */}
+            {/* <div className="flex space-x-4">
+              Social Media Links
               {[
-                { icon: "linkedin", href: "#" },
-                { icon: "twitter", href: "#" },
-                { icon: "github", href: "#" },
-                { icon: "instagram", href: "#" }
+                { icon: <FaLinkedin className="text-lg" />, href: "https://www.linkedin.com/in/adam-joseph-carpenter/" },
+                { icon: <FaTwitter className="text-lg" />, href: "https://twitter.com/summitsoftware" },
+                { icon: <FaGithub className="text-lg" />, href: "https://github.com/Adamj1232" },
+                { icon: <FaInstagram className="text-lg" />, href: "https://instagram.com/summitsoftwareworks" }
               ].map((social, index) => (
                 <a 
                   key={index}
@@ -34,10 +35,10 @@ const Footer: FC = () => {
                   className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 text-white 
                     hover:bg-accent-glow hover:text-white transition duration-200"
                 >
-                  <i className={`fab fa-${social.icon}`}></i>
+                  {social.icon}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
@@ -49,7 +50,7 @@ const Footer: FC = () => {
                 { name: "Software Design", path: "/services#software" },
                 { name: "Web3 Integration", path: "/services#web3" },
                 { name: "SEO Optimization", path: "/services#seo" },
-                { name: "UI/UX Design", path: "/services#design" }
+                { name: "UI/UX Design", path: "/services#mobile" }
               ].map((link, index) => (
                 <li key={index}>
                   <Link 

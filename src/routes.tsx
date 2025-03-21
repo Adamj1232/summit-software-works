@@ -6,6 +6,7 @@ const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Projects = lazy(() => import('./pages/Projects.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
+const Services = lazy(() => import('./pages/Services'));
 
 // Loading component
 const LoadingSpinner = () => (
@@ -37,5 +38,9 @@ export const routes: RouteObject[] = [
   {
     path: '/contact',
     element: withSuspense(Contact),
+  },
+  {
+    path: '/services',
+    element: withSuspense(Services),
   },
 ]; 

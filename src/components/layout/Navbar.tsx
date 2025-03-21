@@ -11,6 +11,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
+  { name: 'Services', path: '/services' },
   { name: 'Projects', path: '/projects' },
   { name: 'Contact', path: '/contact' },
 ];
@@ -96,8 +97,8 @@ const Navbar = () => {
         animate={{ y: 0 }}
         className={`fixed w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-mountain-900/98 backdrop-blur-xl shadow-lg border-b border-white/10'
-            : 'bg-mountain-900/95 backdrop-blur-lg'
+            ? 'bg-mountain-900/75 backdrop-blur-xl shadow-lg border-b border-white/10'
+            : 'bg-mountain-900/50 backdrop-blur-lg'
         } ${!isDesktop ? 'py-1' : ''}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

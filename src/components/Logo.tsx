@@ -4,7 +4,7 @@ import logoIcon from '../assets/brand/logo-icon-transparent_bg1.png';
 
 interface LogoProps {
   className?: string;
-  size?: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large' | 'xl' | 'xxl' | 'xxxl';
   showText?: boolean;
   animate?: boolean;
 }
@@ -13,7 +13,10 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'default', showText 
   const sizeClasses = {
     small: 'h-8',
     default: 'h-12',
-    large: 'h-16'
+    large: 'h-16',
+    xl: 'h-20',
+    xxl: 'h-28',
+    xxxl: 'h-32'
   };
 
   const hoverAnimation = {
