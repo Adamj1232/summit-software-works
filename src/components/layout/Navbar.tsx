@@ -101,7 +101,7 @@ const Navbar = () => {
             : 'bg-mountain-900/50 backdrop-blur-lg'
         } ${!isDesktop ? 'py-1' : ''}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             <Logo size={isDesktop ? "large" : "default"} className="py-2" animate={isDesktop}/>
 
@@ -147,13 +147,14 @@ const Navbar = () => {
                 exit={{ opacity: 0 }}
                 onClick={closeMobileMenu}
                 className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 md:hidden"
+                style={{ width: '100vw' }}
               />
               <motion.div
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                className="fixed right-0 top-0 bottom-0 w-80 bg-mountain-900/98 border-l border-white/10 z-50 shadow-xl md:hidden"
+                className="fixed right-0 top-0 bottom-0 w-[80vw] max-w-[320px] bg-mountain-900/98 border-l border-white/10 z-50 shadow-xl md:hidden"
               >
                 <div className="flex flex-col h-full bg-mountain-900/95">
                   <div className="flex justify-between items-center p-4 pb-1 border-b border-white/10 bg-mountain-900/95">
