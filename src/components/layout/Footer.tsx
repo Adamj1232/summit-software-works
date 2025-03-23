@@ -71,8 +71,8 @@ const Footer: FC = () => {
               {[
                 { name: "About Us", path: "/about" },
                 { name: "Our Work", path: "/projects" },
-                { name: "Blog", path: "/blog" },
-                { name: "Careers", path: "/careers" },
+                // { name: "Blog", path: "/blog" },
+                // { name: "Careers", path: "/careers" },
                 { name: "Contact Us", path: "/contact" }
               ].map((link, index) => (
                 <li key={index}>
@@ -100,14 +100,12 @@ const Footer: FC = () => {
               <li className="text-white/70">
                 <span className="block font-medium mb-1">Phone</span>
                 <a href="tel:+1234567890" className="hover:text-white transition duration-200">
-                  +1 (234) 567-890
+                  +1 (303) 918-2290
                 </a>
               </li>
               <li className="text-white/70">
-                <span className="block font-medium mb-1">Address</span>
                 <span className="block">
-                  123 Summit Street<br />
-                  Mountain View, CA 94043
+                  Arvada, CO
                 </span>
               </li>
             </ul>

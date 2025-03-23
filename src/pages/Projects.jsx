@@ -29,18 +29,21 @@ const ProjectCard = ({ project, onClick }) => (
           alt={project.title}
           className={`${
             project.image.endsWith('.svg')
-              ? 'object-contain w-full h-full'
+              ? 'object-contain h-full'
               : 'object-cover w-full h-full'
-          } transform group-hover/card:scale-110 transition-transform duration-500`}
+          } transform group-hover/card:scale-125 transition-all duration-700 ease-in-out`}
           onError={(e) => {
             e.target.src = `https://images.unsplash.com/photo-${Math.floor(Math.random() * 1000)}?auto=format&fit=crop&w=800&q=80`;
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mountain-900/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-mountain-900/80 via-mountain-900/20 to-transparent 
+                     opacity-0 group-hover/card:opacity-100 transition-all duration-700 ease-in-out"
+        />
       </div>
       
       <motion.h3
-        className="text-xl font-semibold mb-3 text-mountain-800 bg-clip-text text-transparent bg-gradient-to-r"
+        className="text-xl font-semibold mb-3 text-mountain-800 bg-clip-text bg-gradient-to-r"
         style={{
           backgroundImage: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
         }}
@@ -52,48 +55,71 @@ const ProjectCard = ({ project, onClick }) => (
         {project.description}
       </p>
       
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags.map((tag, tagIndex) => (
-          <motion.span
-            key={tagIndex}
-            className="px-3 py-1.5 text-sm rounded-full relative overflow-hidden group/tag"
-            style={{
-              background: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
-              color: 'white',
-              textShadow: '0 1px 2px rgba(0,0,0,0.1)',
-            }}
-            whileHover={{ 
-              scale: 1.05,
-              transition: { type: "spring", stiffness: 400, damping: 10 }
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {/* Animated shine effect */}
+      <div className="flex flex-wrap gap-3">
+        {project.tags.map((tag, tagIndex) => {
+          // Get icon based on tag
+          const getTagIcon = (tag) => {
+            const iconMap = {
+              typescript: '⚡',
+              web3: '🌐',
+              security: '🔒',
+              performance: '⚡',
+              architecture: '🏗️',
+              leadership: '👥',
+              'open source': '📖',
+              kubernetes: '🎯',
+              aws: '☁️',
+              devops: '🔄',
+              scalability: '📈',
+              microservices: '🔗'
+            };
+            
+            return Object.entries(iconMap).find(([key]) => 
+              tag.toLowerCase().includes(key))?.[1] || null;
+          };
+
+          const icon = getTagIcon(tag);
+
+          return (
             <motion.div
-              className="absolute inset-0 w-full h-full"
-              style={{
-                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-                transform: "translateX(-100%)",
-              }}
-              animate={{
-                transform: ["translateX(-100%)", "translateX(100%)"],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 3,
-                ease: "easeInOut",
-              }}
-            />
-            {/* Icon based on tag type (optional) */}
-            <span className="relative flex items-center gap-1">
-              {tag.toLowerCase().includes('typescript') && '⚡'}
-              {tag.toLowerCase().includes('web3') && '🌐'}
-              {tag.toLowerCase().includes('security') && '🔒'}
-              {tag}
-            </span>
-          </motion.span>
-        ))}
+              key={tagIndex}
+              className="relative"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full 
+                            bg-white/95 shadow-sm border border-gray-100
+                            hover:border-gray-200 transition-colors">
+                {/* Icon (if available) */}
+                {icon && (
+                  <span className="text-base leading-none">{icon}</span>
+                )}
+                
+                {/* Tag text */}
+                <span
+                  className="text-sm font-medium"
+                  style={{
+                    color: project.color.split(' ')[1],
+                  }}
+                >
+                  {tag}
+                </span>
+              </div>
+
+              {/* Subtle background glow on hover */}
+              <motion.div
+                className="absolute inset-0 -z-10 rounded-full opacity-0 blur-sm transition-opacity"
+                style={{
+                  background: `linear-gradient(45deg, ${project.color.split(' ')[1]}, ${project.color.split(' ')[3]})`,
+                }}
+                initial={false}
+                whileHover={{
+                  opacity: 0.15,
+                }}
+              />
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Stats or Metrics */}
@@ -155,7 +181,7 @@ const Projects = () => {
       title: "Web3-Onboard",
       description: "Led development and maintenance of a leading Web3 wallet connection library, serving thousands of developers worldwide. Implemented multi-wallet support, chain switching, and account management features.",
       image: web3OnboardHero,
-      tags: ["TypeScript", "Web3", "Open Source", "Leadership"],
+      tags: ["Web3", "Open Source", "Leadership"],
       link: "https://github.com/blocknative/web3-onboard",
       color: "from-blue-500 to-indigo-500",
       stats: {
@@ -169,32 +195,32 @@ const Projects = () => {
         "Average 9k weekly NPM downloads",
       ]
     },
-    {
-      title: "Enterprise Payment Systems",
-      description: "Architected and implemented high-performance payment processing systems handling millions in daily transactions. Optimized database queries and implemented caching strategies reducing response times by 40%.",
-      image: "/images/projects/payment.jpg",
-      tags: ["System Architecture", "Performance", "Security", "Scalability"],
-      link: "#",
-      color: "from-green-500 to-teal-500",
-      metrics: [
-        "40% faster processing",
-        "99.99% uptime",
-        "Millions in daily transactions"
-      ]
-    },
-    {
-      title: "Cloud-Native Applications",
-      description: "Designed and deployed microservices architecture for enterprise applications, implementing CI/CD pipelines and container orchestration. Reduced deployment time by 60% and improved system reliability.",
-      image: "/images/projects/cloud.jpg",
-      tags: ["Microservices", "Kubernetes", "DevOps", "AWS"],
-      link: "#",
-      color: "from-purple-500 to-pink-500",
-      metrics: [
-        "60% faster deployments",
-        "Zero downtime updates",
-        "Auto-scaling enabled"
-      ]
-    }
+    // {
+    //   title: "Enterprise Payment Systems",
+    //   description: "Architected and implemented high-performance payment processing systems handling millions in daily transactions. Optimized database queries and implemented caching strategies reducing response times by 40%.",
+    //   image: "/images/projects/payment.jpg",
+    //   tags: ["System Architecture", "Performance", "Security", "Scalability"],
+    //   link: "#",
+    //   color: "from-green-500 to-teal-500",
+    //   metrics: [
+    //     "40% faster processing",
+    //     "99.99% uptime",
+    //     "Millions in daily transactions"
+    //   ]
+    // },
+    // {
+    //   title: "Cloud-Native Applications",
+    //   description: "Designed and deployed microservices architecture for enterprise applications, implementing CI/CD pipelines and container orchestration. Reduced deployment time by 60% and improved system reliability.",
+    //   image: "/images/projects/cloud.jpg",
+    //   tags: ["Microservices", "Kubernetes", "DevOps", "AWS"],
+    //   link: "#",
+    //   color: "from-purple-500 to-pink-500",
+    //   metrics: [
+    //     "60% faster deployments",
+    //     "Zero downtime updates",
+    //     "Auto-scaling enabled"
+    //   ]
+    // }
   ];
 
   return (
