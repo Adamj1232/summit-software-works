@@ -1,14 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap');
 
 :root {
+  /* New Brand Colors */
+  --primary: #1E3A8A;
+  --secondary: #14B8A6;
+  --accent: #FBBF24;
+  --neutral-light: #F3F4F6;
+  --neutral-dark: #6B7280;
+  
+  /* Legacy Brand Colors */
   --brand-blue: #3B82F6;
   --brand-green: #10B981;
   --brand-orange: #F59E0B;
   --accent-glow: #60A5FA;
   --accent-highlight: #3B82F6;
-  --brand-gradient-start: #3B82F6;
-  --brand-gradient-middle: #10B981;
-  --brand-gradient-end: #F59E0B;
+  --brand-gradient-start: var(--primary);
+  --brand-gradient-middle: var(--secondary);
+  --brand-gradient-end: var(--accent);
 }
 
 @tailwind base;
@@ -21,7 +29,11 @@
   }
   
   body {
-    @apply bg-mountain-50 text-mountain-900 dark:bg-mountain-900 dark:text-mountain-50;
+    @apply bg-neutral-light text-neutral-dark dark:bg-primary dark:text-neutral-light font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
   }
 }
 
@@ -31,19 +43,23 @@
   }
   
   .btn-primary {
-    @apply bg-brand-blue text-white hover:bg-brand-green;
+    @apply bg-primary text-white hover:bg-secondary;
   }
   
   .btn-secondary {
-    @apply bg-mountain-500 text-white hover:bg-mountain-600;
+    @apply bg-secondary text-white hover:bg-accent;
   }
   
   .section-title {
-    @apply text-4xl md:text-5xl font-display font-bold text-mountain-800 dark:text-mountain-100 mb-6;
+    @apply text-4xl md:text-5xl font-heading font-bold text-primary dark:text-neutral-light mb-6;
   }
   
   .card {
-    @apply bg-white dark:bg-mountain-800 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+    @apply bg-white dark:bg-primary/90 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+  }
+
+  .fade-in {
+    @apply animate-fade-in;
   }
 }
 

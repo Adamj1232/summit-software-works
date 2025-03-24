@@ -12,11 +12,11 @@ const Footer: FC = () => {
       <div className="absolute inset-0 bg-mountain-pattern opacity-5 mix-blend-overlay"></div>
       
       <div className="container mx-auto px-6 pt-16 pb-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-12">
           {/* Company Info */}
-          <div className="md:col-span-1 w-full flex-col justify-center flex">
-            <Logo size="xxxl" className="mb-6 flex justify-center" />
-            <p className="text-white/80 mb-6 font-medium">
+          <div className="md:col-span-4 flex flex-col items-center md:items-start">
+            <Logo size="xxxl" className="mb-6" />
+            <p className="text-white/80 mb-6 font-medium text-center md:text-left max-w-sm">
               Building innovative digital solutions for businesses ready to reach new heights.
             </p>
             {/* <div className="flex space-x-4">
@@ -42,7 +42,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="md:col-span-2">
             <h4 className="text-white text-lg font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
@@ -65,7 +65,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Company Links */}
-          <div>
+          <div className="md:col-span-2">
             <h4 className="text-white text-lg font-semibold mb-6">Company</h4>
             <ul className="space-y-3">
               {[
@@ -88,32 +88,37 @@ const Footer: FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="md:col-span-4">
             <h4 className="text-white text-lg font-semibold mb-6">Contact</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li className="text-white/70">
                 <span className="block font-medium mb-1">Email</span>
-                <a href="mailto:contact@summitsoftwareworks.com" className="hover:text-white transition duration-200">
+                <a 
+                  href="mailto:contact@summitsoftwareworks.com" 
+                  className="hover:text-white transition duration-200 break-words"
+                >
                   contact@summitsoftwareworks.com
                 </a>
               </li>
               <li className="text-white/70">
                 <span className="block font-medium mb-1">Phone</span>
-                <a href="tel:+1234567890" className="hover:text-white transition duration-200">
+                <a 
+                  href="tel:+13039182290" 
+                  className="hover:text-white transition duration-200"
+                >
                   +1 (303) 918-2290
                 </a>
               </li>
               <li className="text-white/70">
-                <span className="block">
-                  Arvada, CO
-                </span>
+                <span className="block font-medium">Location</span>
+                <span>Arvada, CO</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10 text-center text-white/60">
+        <div className="mt-16 pt-8 border-t border-white/10 text-center text-white/60">
           <p>&copy; {currentYear} Summit Software Works. All rights reserved.</p>
         </div>
       </div>

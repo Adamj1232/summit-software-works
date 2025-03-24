@@ -7,6 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: '#1E3A8A',
+        secondary: '#14B8A6',
+        accent: '#FBBF24',
+        neutral: {
+          light: '#F3F4F6',
+          dark: '#6B7280',
+        },
         brand: {
           blue: 'var(--brand-blue)',
           green: 'var(--brand-green)',
@@ -42,14 +49,23 @@ module.exports = {
         },
       },
       fontFamily: {
+        heading: ['Poppins', 'system-ui', 'sans-serif'],
+        body: ['Open Sans', 'system-ui', 'sans-serif'],
         sans: ['Inter var', 'system-ui', 'sans-serif'],
         display: ['Quicksand', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
+        'fade-in': 'fadeIn 0.5s ease-out',
         'float': 'float 3s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
         'gradient-shift': 'gradient-shift 8s ease infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

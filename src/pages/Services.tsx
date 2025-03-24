@@ -83,15 +83,15 @@ const Services: FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white" onMouseMove={handleMouseMove}>
+    <div className="min-h-screen bg-neutral-light" onMouseMove={handleMouseMove}>
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-b from-mountain-900 to-mountain-800 text-white overflow-hidden">
+      <section className="relative py-32 bg-gradient-to-b from-primary to-primary/90 text-white overflow-hidden">
         <div className="absolute inset-0">
           {/* Animated grid background */}
           <div className="absolute inset-0 animate-gradient-shift" 
             style={{
-              backgroundImage: `radial-gradient(circle at ${50 + mouseX.get()}% ${50 + mouseY.get()}%, rgba(99, 102, 241, 0.15) 0%, transparent 50%)`,
-              transition: 'background-position 0.3s ease-out'
+              backgroundImage: 'linear-gradient(135deg, var(--primary), var(--secondary), var(--accent))',
+              opacity: 0.1
             }}
           />
           
@@ -238,7 +238,7 @@ const Services: FC = () => {
             className="max-w-4xl mx-auto text-center"
           >
             <motion.h1 
-              className="gradient-text-flow text-5xl md:text-7xl font-bold mb-6"
+              className="text-5xl md:text-7xl font-heading font-bold mb-6 bg-gradient-to-r from-neutral-light via-secondary to-accent bg-clip-text text-transparent"
               style={{ scale }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -246,11 +246,11 @@ const Services: FC = () => {
               Our Services
             </motion.h1>
             <motion.p
-              className="text-xl text-blue-200 hover-glow"
+              className="text-xl text-neutral-light hover:text-accent transition-colors duration-300"
               style={{ y }}
             >
-              Comprehensive software solutions engineered to elevate your business to new heights.
-              </motion.p>
+              Elevating businesses through innovative software solutions
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -272,7 +272,7 @@ const Services: FC = () => {
             >
               {/* Decorative line */}
               <motion.div
-                className="absolute -left-8 top-0 w-1 h-full bg-mountain-200"
+                className="absolute -left-8 top-0 w-1 h-full bg-secondary/20"
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -281,7 +281,7 @@ const Services: FC = () => {
 
               <div className="relative">
                 <motion.div
-                  className="absolute -left-4 -top-4 w-8 h-8 bg-mountain-100 rounded-full"
+                  className="absolute -left-4 -top-4 w-8 h-8 bg-secondary/10 rounded-full"
                   // animate={{
                   //   scale: [1, 1.2, 1],
                   //   opacity: [0.5, 0.8, 0.5],
@@ -292,16 +292,16 @@ const Services: FC = () => {
                     ease: "easeInOut"
                   }}
                 />
-                <h2 className="text-3xl font-bold text-mountain-900 mb-6 relative">{service.title}</h2>
+                <h2 className="text-3xl font-heading font-bold text-primary mb-6 relative">{service.title}</h2>
               </div>
               
-              <p className="text-lg text-gray-600 mb-8 max-w-3xl">{service.description}</p>
+              <p className="text-lg text-neutral-dark mb-8 max-w-3xl">{service.description}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {service.features.map((feature, featureIndex) => (
                   <motion.div 
                     key={featureIndex}
-                    className="group flex items-start space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-mountain-50 transition-colors duration-300"
+                    className="group flex items-start space-x-3 p-4 bg-white rounded-lg hover:bg-secondary/5 transition-colors duration-300"
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -311,7 +311,7 @@ const Services: FC = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <svg 
-                        className="w-6 h-6 text-mountain-600 mt-1" 
+                        className="w-6 h-6 text-secondary mt-1" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -324,7 +324,7 @@ const Services: FC = () => {
                         />
                       </svg>
                     </motion.div>
-                    <span className="text-gray-700 group-hover:text-mountain-900 transition-colors duration-300">
+                    <span className="text-neutral-dark group-hover:text-primary transition-colors duration-300">
                       {feature}
                     </span>
                   </motion.div>
@@ -333,14 +333,14 @@ const Services: FC = () => {
 
               {/* Decorative corner elements */}
               <motion.div
-                className="absolute -right-4 -top-4 w-16 h-16 border-t-2 border-r-2 border-mountain-200"
+                className="absolute -right-4 -top-4 w-16 h-16 border-t-2 border-r-2 border-secondary/20"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               />
               <motion.div
-                className="absolute -left-4 -bottom-4 w-16 h-16 border-b-2 border-l-2 border-mountain-200"
+                className="absolute -left-4 -bottom-4 w-16 h-16 border-b-2 border-l-2 border-secondary/20"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
