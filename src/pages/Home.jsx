@@ -129,7 +129,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-forest-800 to-mountain-800">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-forest-800 to-mountain-800">
               Our Expertise
             </h2>
             <p className="text-xl text-forest-700 max-w-2xl mx-auto">
@@ -199,7 +199,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+            <h2 className="text-4xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               Ready to Transform Your Digital Vision?
             </h2>
             <p className="text-xl mb-8 text-blue-400">
