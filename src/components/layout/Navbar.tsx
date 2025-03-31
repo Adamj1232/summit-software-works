@@ -2,6 +2,7 @@ import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../Logo';
+import ThemeToggle from '../ThemeToggle';
 
 interface NavItem {
   name: string;
@@ -115,31 +116,35 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <NavLink key={item.path} item={item} isActive={location.pathname === item.path} />
               ))}
+              <ThemeToggle />
               <GetStartedButton />
             </div>
 
             {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-lg text-white hover:bg-white/10 
-                focus-ring"
-            >
-              <div className="w-6 h-6 flex flex-col justify-around">
-                <motion.span
-                  animate={{ rotate: isMobileMenuOpen ? 45 : 0, y: isMobileMenuOpen ? 8 : 0 }}
-                  className="w-full h-0.5 bg-white transform origin-left transition-all duration-200"
-                />
-                <motion.span
-                  animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
-                  className="w-full h-0.5 bg-white transition-all duration-200"
-                />
-                <motion.span
-                  animate={{ rotate: isMobileMenuOpen ? -45 : 0, y: isMobileMenuOpen ? -8 : 0 }}
-                  className="w-full h-0.5 bg-white transform origin-left transition-all duration-200"
-                />
-              </div>
-            </motion.button>
+            <div className="flex items-center space-x-4 md:hidden">
+              <ThemeToggle />
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2.5 rounded-lg text-white hover:bg-white/10 
+                  focus-ring"
+              >
+                <div className="w-6 h-6 flex flex-col justify-around">
+                  <motion.span
+                    animate={{ rotate: isMobileMenuOpen ? 45 : 0, y: isMobileMenuOpen ? 8 : 0 }}
+                    className="w-full h-0.5 bg-white transform origin-left transition-all duration-200"
+                  />
+                  <motion.span
+                    animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
+                    className="w-full h-0.5 bg-white transition-all duration-200"
+                  />
+                  <motion.span
+                    animate={{ rotate: isMobileMenuOpen ? -45 : 0, y: isMobileMenuOpen ? -8 : 0 }}
+                    className="w-full h-0.5 bg-white transform origin-left transition-all duration-200"
+                  />
+                </div>
+              </motion.button>
+            </div>
           </div>
         </div>
 
@@ -184,18 +189,12 @@ const Navbar = () => {
                   </div>
                   <nav className="flex-1 px-4 py-6 space-y-2">
                     {navItems.map((item) => (
-                      <Link
+                      <MobileNavLink
                         key={item.path}
-                        to={item.path}
+                        item={item}
+                        isActive={location.pathname === item.path}
                         onClick={closeMobileMenu}
-                        className={`block px-4 py-3 rounded-lg transition-colors duration-200 ${
-                          location.pathname === item.path 
-                            ? 'text-white font-semibold bg-white/10' 
-                            : 'text-white/90 hover:text-white hover:bg-white/5'
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
+                      />
                     ))}
                     <div className="mt-6">
                       <GetStartedButton className="w-full py-3" />

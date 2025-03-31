@@ -1,25 +1,22 @@
 import { lazy, Suspense } from 'react';
 import { RouteObject } from 'react-router-dom';
+import LoadingSpinner from './components/common/LoadingSpinner';
+import ErrorBoundary from './components/common/ErrorBoundary';
 
-// Lazy load components
-const Home = lazy(() => import('./pages/Home.jsx'));
-const About = lazy(() => import('./pages/About.jsx'));
-const Projects = lazy(() => import('./pages/Projects.jsx'));
-const Contact = lazy(() => import('./pages/Contact.jsx'));
-const Services = lazy(() => import('./pages/Services'));
+// Lazy load components with chunk names for better debugging
+const Home = lazy(() => import(/* webpackChunkName: "home" */ './pages/Home'));
+const About = lazy(() => import(/* webpackChunkName: "about" */ './pages/About'));
+const Projects = lazy(() => import(/* webpackChunkName: "projects" */ './pages/Projects'));
+const Contact = lazy(() => import(/* webpackChunkName: "contact" */ './pages/Contact'));
+const Services = lazy(() => import(/* webpackChunkName: "services" */ './pages/Services'));
 
-// Loading component
-const LoadingSpinner = () => (
-  <div className="flex items-center justify-center min-h-screen">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-  </div>
-);
-
-// Wrap lazy components with Suspense
+// Wrap lazy components with Suspense and ErrorBoundary
 const withSuspense = (Component: React.LazyExoticComponent<any>) => (
-  <Suspense fallback={<LoadingSpinner />}>
-    <Component />
-  </Suspense>
+  <ErrorBoundary>
+    <Suspense fallback={<LoadingSpinner size="large" />}>
+      <Component />
+    </Suspense>
+  </ErrorBoundary>
 );
 
 export const routes: RouteObject[] = [
@@ -43,4 +40,8 @@ export const routes: RouteObject[] = [
     path: '/services',
     element: withSuspense(Services),
   },
+  {
+    path: '*',
+    element: withSuspense(lazy(() => import(/* webpackChunkName: "not-found" */ './pages/NotFound'))),
+  }
 ]; 

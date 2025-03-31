@@ -1,31 +1,48 @@
 import { FC, memo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { generateMetaTags } from '../../utils/seo';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface MetaTagsProps {
-  title: string;
+  title?: string;
   description?: string;
   keywords?: string;
-  url: string;
+  url?: string;
   imageUrl?: string;
 }
 
+const generateMetaTags = (
+  title = 'Summit Software Works - Web & Mobile App Development',
+  description = 'Summit Software Works specializes in building innovative web and mobile applications with cutting-edge technology and exceptional user experience.',
+  keywords = 'web development, mobile app development, software development, react, node.js, typescript, summit software works',
+  url = 'https://summitsoftwareworks.com',
+  imageUrl = 'https://summitsoftwareworks.com/og-image.png'
+) => ({
+  title: `${title} | Summit Software Works`,
+  description,
+  keywords,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: url,
+  ogImage: imageUrl,
+});
+
 const MetaTags: FC<MetaTagsProps> = memo(({ title, description, keywords, url, imageUrl }) => {
+  const { isDarkMode } = useTheme();
   const metaTags = generateMetaTags(title, description, keywords, url, imageUrl);
 
   return (
     <Helmet>
       {/* Primary Meta Tags */}
-      <html lang={metaTags.language} />
+      <html lang="en" />
       <title>{metaTags.title}</title>
       <meta name="title" content={metaTags.title} />
       <meta name="description" content={metaTags.description} />
       <meta name="keywords" content={metaTags.keywords} />
-      <meta name="author" content={metaTags.author} />
-      <meta name="robots" content={metaTags.robots} />
-      <meta name="viewport" content={metaTags.viewport} />
-      <meta name="theme-color" content={metaTags.themeColor} />
-      <meta name="rating" content={metaTags.rating} />
+      <meta name="author" content="Summit Software Works" />
+      <meta name="robots" content="index, follow" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="theme-color" content={isDarkMode ? '#0F172A' : '#F3F4F6'} />
+      <meta name="rating" content="general" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
@@ -33,17 +50,17 @@ const MetaTags: FC<MetaTagsProps> = memo(({ title, description, keywords, url, i
       <meta property="og:title" content={metaTags.ogTitle} />
       <meta property="og:description" content={metaTags.ogDescription} />
       <meta property="og:image" content={metaTags.ogImage} />
-      <meta property="og:site_name" content={metaTags.author} />
-      <meta property="og:locale" content={metaTags.language} />
+      <meta property="og:site_name" content="Summit Software Works" />
+      <meta property="og:locale" content="en_US" />
       
       {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={metaTags.ogUrl} />
-      <meta name="twitter:title" content={metaTags.twitterTitle} />
-      <meta name="twitter:description" content={metaTags.twitterDescription} />
-      <meta name="twitter:image" content={metaTags.twitterImage} />
-      <meta name="twitter:creator" content="@summitsoftware" />
-      <meta name="twitter:site" content="@summitsoftware" />
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={metaTags.ogUrl} />
+      <meta property="twitter:title" content={metaTags.ogTitle} />
+      <meta property="twitter:description" content={metaTags.ogDescription} />
+      <meta property="twitter:image" content={metaTags.ogImage} />
+      <meta property="twitter:creator" content="@summitsoftware" />
+      <meta property="twitter:site" content="@summitsoftware" />
       
       {/* Additional SEO Tags */}
       <meta name="format-detection" content="telephone=no" />

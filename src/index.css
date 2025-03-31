@@ -93,7 +93,7 @@
   }
 
   .card {
-    @apply bg-white dark:bg-mountain-800/90 rounded-xl shadow-brand dark:shadow-none;
+    @apply bg-white dark:bg-mountain-800/90 rounded-xl shadow-lg dark:shadow-none;
     @apply border border-mountain-200/50 dark:border-mountain-700/50;
     @apply p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10;
   }
@@ -106,7 +106,11 @@
 
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500;
-    @apply animate-gradient-shift bg-[length:200%_auto];
+    @apply animate-gradient-shift;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-secondary-400;
   }
 }
 
@@ -124,12 +128,6 @@
 /* Smooth transitions */
 .page-transition {
   @apply transition-all duration-300;
-}
-
-/* Focus Styles */
-.focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
-  @apply dark:focus:ring-offset-mountain-900;
 }
 
 /* Custom Scrollbar */

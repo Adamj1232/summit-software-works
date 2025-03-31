@@ -120,7 +120,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-mountain-50">
+      <section className="py-20 bg-neutral-light dark:bg-mountain-900">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -129,10 +129,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-forest-800 to-mountain-800">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 dark:from-secondary-400 dark:to-primary-400">
               Our Expertise
             </h2>
-            <p className="text-xl text-forest-700 max-w-2xl mx-auto">
+            <p className="text-xl text-mountain-700 dark:text-mountain-200 max-w-2xl mx-auto">
               We deliver comprehensive solutions that help businesses thrive in the digital landscape.
             </p>
           </motion.div>
@@ -155,7 +155,9 @@ const Home = () => {
               >
                 <motion.div
                   className={`card hover:shadow-2xl transition-all duration-300 backdrop-blur-sm 
-                    ${hoveredService === index ? 'bg-gradient-to-br ' + service.color + ' text-white' : 'bg-white'}`}
+                    ${hoveredService === index 
+                      ? 'bg-gradient-to-br ' + service.color + ' text-white' 
+                      : 'bg-white dark:bg-mountain-800/90'}`}
                 >
                   <motion.div
                     className="text-6xl mb-6"
@@ -163,10 +165,18 @@ const Home = () => {
                   >
                     {service.icon}
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className={`text-xl font-semibold mb-3 ${
+                    hoveredService === index 
+                      ? 'text-white' 
+                      : 'text-mountain-900 dark:text-white'
+                  }`}>
                     {service.title}
                   </h3>
-                  <p className={hoveredService === index ? 'text-white/90' : 'text-mountain-600'}>
+                  <p className={
+                    hoveredService === index 
+                      ? 'text-white/90' 
+                      : 'text-mountain-600 dark:text-mountain-300'
+                  }>
                     {service.description}
                   </p>
                   
