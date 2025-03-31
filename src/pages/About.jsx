@@ -66,12 +66,12 @@ const About = () => {
       ))}
 
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-b from-mountain-900 to-mountain-800 text-white overflow-hidden">
+      <section className="relative py-32 bg-mountain-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           {/* Animated grid background */}
-          <div className="absolute inset-0 animate-gradient-shift" 
+          <div className="absolute inset-0 animate-gradient-shift opacity-30" 
             style={{
-              backgroundImage: `radial-gradient(circle at ${50 + mousePosition.x}% ${50 + mousePosition.y}%, rgba(99, 102, 241, 0.15) 0%, transparent 50%)`,
+              backgroundImage: `radial-gradient(circle at ${50 + mousePosition.x}% ${50 + mousePosition.y}%, rgba(99, 102, 241, 0.3) 0%, transparent 50%)`,
               transition: 'background-position 0.3s ease-out'
             }}
           />
@@ -86,7 +86,7 @@ const About = () => {
                 height: Math.random() * 40 + 20 + 'px',
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                background: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`,
+                background: `rgba(255, 255, 255, 0.1)`,
                 borderRadius: Math.random() > 0.5 ? '50%' : '0%',
               }}
               animate={{
@@ -115,7 +115,7 @@ const About = () => {
             className="max-w-4xl mx-auto text-center"
           >
             <motion.h1 
-              className="gradient-text-flow text-5xl md:text-7xl font-bold mb-6"
+              className="text-5xl md:text-7xl font-bold mb-6 text-white"
               style={{ scale }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -123,7 +123,7 @@ const About = () => {
               Our Story
             </motion.h1>
             <motion.p
-              className="text-xl text-blue-200 hover-glow"
+              className="text-xl text-white/90"
               style={{ y }}
             >
               Building exceptional digital experiences with passion and precision.
@@ -133,7 +133,7 @@ const About = () => {
       </section>
 
       {/* Values Section with enhanced animations */}
-      <section className="py-20 bg-gradient-to-br from-forest-900 via-purple-900 to-mountain-900 text-white">
+      <section className="py-20 bg-mountain-900 text-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -142,10 +142,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="gradient-text-flow text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Our Values
             </h2>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto animate-pulse-glow">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
               These core principles guide everything we do.
             </p>
           </motion.div>
