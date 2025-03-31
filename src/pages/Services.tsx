@@ -1,5 +1,6 @@
 import { FC, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useScroll } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 const Services: FC = () => {
   const mouseX = useMotionValue(0);
@@ -20,70 +21,210 @@ const Services: FC = () => {
 
   const services = [
     {
-      id: 'web',
-      title: 'Web Development',
-      description: 'We craft robust, scalable web applications that drive business growth. Our expertise spans modern frameworks like React, Next.js, and Node.js, ensuring your digital presence is both powerful and performant.',
+      id: 'enterprise-solutions',
+      title: 'Enterprise Solutions & Digital Transformation',
+      description: 'Transform your business with enterprise-grade digital solutions. We specialize in modernizing legacy systems, implementing cloud-native architectures, and delivering scalable applications that drive operational efficiency.',
       features: [
-        'Custom Web Application Development',
-        'Progressive Web Apps (PWAs)',
-        'API Development & Integration',
-        'Cloud-Native Solutions',
-        'Performance Optimization'
-      ]
+        'Legacy System Modernization',
+        'Cloud Migration & Integration',
+        'Enterprise Application Development',
+        'Business Process Automation',
+        'Data Analytics & Business Intelligence'
+      ],
+      benefits: [
+        '40% average reduction in operational costs',
+        'Up to 99.99% system uptime',
+        'Enhanced security and compliance',
+        'Seamless third-party integrations'
+      ],
+      technologies: ['Azure', 'AWS', 'Kubernetes', 'Docker', 'Microservices']
     },
     {
-      id: 'software',
-      title: 'Software Design',
-      description: 'Our software design approach combines architectural excellence with practical implementation. We create maintainable, scalable systems that evolve with your business needs.',
+      id: 'ai-ml-solutions',
+      title: 'AI & Machine Learning Integration',
+      description: 'Harness the power of artificial intelligence to gain competitive advantage. Our AI solutions help automate processes, extract insights from data, and create intelligent user experiences.',
       features: [
-        'System Architecture Design',
-        'Microservices Architecture',
-        'Cloud Infrastructure Design',
-        'Database Design & Optimization',
-        'Security-First Approach'
-      ]
+        'Custom AI Model Development',
+        'Natural Language Processing',
+        'Predictive Analytics',
+        'Computer Vision Solutions',
+        'AI-Powered Process Automation'
+      ],
+      benefits: [
+        'Up to 60% reduction in manual tasks',
+        'Real-time decision support',
+        'Enhanced customer experiences',
+        'Data-driven insights'
+      ],
+      technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Azure ML', 'Google AI']
     },
     {
-      id: 'web3',
-      title: 'Web3 Integration',
-      description: 'We bridge traditional web applications with the future of decentralized technology. Our team specializes in blockchain integration, smart contracts, and decentralized applications (dApps).',
+      id: 'web-development',
+      title: 'Modern Web Applications',
+      description: "Build scalable, high-performance web applications that deliver exceptional user experiences. Our full-stack expertise ensures your web presence stands out in today's competitive landscape.",
+      features: [
+        'Progressive Web Apps (PWA)',
+        'Single Page Applications (SPA)',
+        'Responsive Design & Mobile-First',
+        'Real-time Features & WebSocket',
+        'API Development & Integration'
+      ],
+      benefits: [
+        '50% faster load times',
+        'Improved user engagement',
+        'Higher conversion rates',
+        'Cross-platform compatibility'
+      ],
+      technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'GraphQL']
+    },
+    {
+      id: 'web3-blockchain',
+      title: 'Web3 & Blockchain Solutions',
+      description: 'Stay ahead of the curve with cutting-edge blockchain technology. We help businesses implement secure, transparent, and efficient decentralized solutions.',
       features: [
         'Smart Contract Development',
+        'DeFi Platform Development',
+        'NFT Marketplace Creation',
         'Blockchain Integration',
-        'NFT Implementation',
-        'DeFi Solutions',
-        'Web3 Authentication'
-      ]
+        'Crypto Payment Solutions'
+      ],
+      benefits: [
+        'Enhanced security and transparency',
+        'Reduced transaction costs',
+        'Automated trust mechanisms',
+        'New revenue streams'
+      ],
+      technologies: ['Ethereum', 'Solidity', 'Web3.js', 'IPFS', 'Hardhat']
     },
     {
-      id: 'mobile',
-      title: 'Mobile App Development',
-      description: 'We build high-performance, native and cross-platform mobile applications that deliver exceptional user experiences. Our mobile solutions combine cutting-edge technology with intuitive design to ensure maximum engagement and ROI.',
+      id: 'mobile-development',
+      title: 'Enterprise Mobile Solutions',
+      description: 'Deliver seamless mobile experiences across platforms. Our mobile solutions combine native performance with cross-platform efficiency to maximize your ROI.',
       features: [
-        'Native iOS & Android Development',
-        'Cross-Platform Solutions (React Native)',
-        'App Store Optimization',
-        'Push Notification Systems',
-        'Offline-First Architecture',
-        'Mobile Analytics Integration'
-      ]
-    },
-    {
-      id: 'seo',
-      title: 'SEO Optimization',
-      description: 'Our technical SEO expertise ensures your digital presence ranks at the top. We combine technical optimization with content strategy to maximize your online visibility.',
-      features: [
-        'Technical SEO Audit',
-        'Performance Optimization',
-        'Schema Markup Implementation',
-        'Mobile-First Optimization',
-        'Core Web Vitals Enhancement'
-      ]
+        'Native iOS & Android Apps',
+        'Cross-Platform Development',
+        'Enterprise Mobile Solutions',
+        'Mobile Security & Compliance',
+        'Offline-First Architecture'
+      ],
+      benefits: [
+        'Reduced development costs',
+        '30% faster time-to-market',
+        'Consistent user experience',
+        'Enterprise-grade security'
+      ],
+      technologies: ['React Native', 'Swift', 'Kotlin', 'Flutter', 'Firebase']
     }
   ];
 
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-mountain-900" onMouseMove={handleMouseMove}>
+      <Helmet>
+        <title>Custom Enterprise Software Development Services | AI, Web3, Cloud Solutions</title>
+        <meta name="description" content="Transform your business with enterprise-grade software solutions. Specializing in AI/ML integration, cloud-native applications, Web3 development, and digital transformation. 10+ years of delivering scalable solutions." />
+        <meta property="og:title" content="Enterprise Software Development & Digital Transformation Services | Summit Software Works" />
+        <meta property="og:description" content="Leading software development company delivering AI-powered solutions, cloud-native applications, and Web3 integration. Transform your business with our enterprise-grade development services." />
+        <meta name="keywords" content="enterprise software development, AI integration, cloud-native applications, digital transformation, custom software development, Web3 solutions, React development, Node.js, TypeScript, microservices architecture, DevOps automation, enterprise mobile apps" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Summit Software Works" />
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="Denver" />
+        <link rel="canonical" href="https://summitsoftwareworks.com/services" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Enterprise Software Development Services",
+            "description": "Transform your business with our enterprise software development services. Specializing in AI integration, cloud-native solutions, and digital transformation.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Summit Software Works",
+              "url": "https://summitsoftwareworks.com"
+            },
+            "offers": {
+              "@type": "AggregateOffer",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Enterprise Solutions & Digital Transformation",
+                    "description": "Transform your business with enterprise-grade digital solutions. Modernize legacy systems and implement cloud-native architectures.",
+                    "serviceType": ["Digital Transformation", "Legacy Modernization", "Cloud Migration"],
+                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI & Machine Learning Integration",
+                    "description": "Custom AI model development, natural language processing, and intelligent automation solutions.",
+                    "serviceType": ["AI Development", "Machine Learning", "Process Automation"],
+                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Modern Web Applications",
+                    "description": "Full-stack web development using React, Next.js, and Node.js with focus on performance and scalability.",
+                    "serviceType": ["Web Development", "Full Stack Development", "API Development"],
+                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Web3 & Blockchain Solutions",
+                    "description": "Smart contract development, DeFi platforms, and blockchain integration services.",
+                    "serviceType": ["Blockchain Development", "Smart Contracts", "DeFi Solutions"],
+                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Enterprise Mobile Solutions",
+                    "description": "Cross-platform mobile development with React Native and native iOS/Android expertise.",
+                    "serviceType": ["Mobile Development", "Cross Platform Development", "Enterprise Mobile"],
+                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
+                  }
+                }
+              ]
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "United States"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Software Development Services",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Enterprise Software Development",
+                  "description": "Custom enterprise software solutions that drive digital transformation and operational efficiency."
+                },
+                {
+                  "@type": "Service",
+                  "name": "AI & Machine Learning",
+                  "description": "Intelligent automation and data-driven solutions powered by cutting-edge AI technology."
+                },
+                {
+                  "@type": "Service",
+                  "name": "Cloud-Native Development",
+                  "description": "Scalable, resilient applications built on modern cloud infrastructure."
+                }
+              ]
+            }
+          })}
+        </script>
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-b from-mountain-900 to-primary-600 text-white overflow-hidden">
         <div className="absolute inset-0">
@@ -243,113 +384,135 @@ const Services: FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Our Services
+              Enterprise Software Solutions
             </motion.h1>
             <motion.p
-              className="text-xl text-white/90 hover:text-white transition-colors duration-300"
+              className="text-xl text-white/90 hover:text-white transition-colors duration-300 mb-8"
               style={{ y }}
             >
-              Elevating businesses through innovative software solutions
+              Transform your business with cutting-edge technology solutions that drive growth and innovation.
             </motion.p>
+
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto mb-12">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-2">10+</div>
+                <div className="text-sm text-blue-200">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-400 mb-2">200+</div>
+                <div className="text-sm text-blue-200">Projects Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-pink-400 mb-2">50+</div>
+                <div className="text-sm text-blue-200">Enterprise Clients</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
+                <div className="text-sm text-blue-200">Support Available</div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Sections */}
-      <div className="container mx-auto px-6 py-16">
-        {services.map((service, index) => (
-          <section 
-            key={service.id} 
-            id={service.id}
-            className="mb-24 scroll-mt-20 relative"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              {/* Decorative line */}
+      {/* Services Grid */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {services.map((service, index) => (
               <motion.div
-                className="absolute -left-8 top-0 w-1 h-full bg-primary/20 dark:bg-secondary/40"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-              />
-
-              <div className="relative">
-                <motion.div
-                  className="absolute -left-4 -top-4 w-8 h-8 bg-primary/10 dark:bg-secondary/30 rounded-full"
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <h2 className="text-3xl font-heading font-bold text-mountain-900 dark:text-white mb-6 relative">
+                className="bg-white dark:bg-mountain-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              >
+                <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                   {service.title}
                 </h2>
-              </div>
-              
-              <p className="text-lg text-mountain-600 dark:text-neutral-light/90 mb-8 max-w-3xl">
-                {service.description}
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {service.features.map((feature, featureIndex) => (
-                  <motion.div 
-                    key={featureIndex}
-                    className="group flex items-start space-x-3 p-4 bg-white dark:bg-mountain-800 rounded-lg hover:bg-primary/5 dark:hover:bg-secondary/10 transition-colors duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <motion.div
-                      className="relative"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <svg 
-                        className="w-6 h-6 text-primary dark:text-secondary-400 mt-1" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M5 13l4 4L19 7" 
-                        />
-                      </svg>
-                    </motion.div>
-                    <span className="text-mountain-700 dark:text-neutral-light/90 group-hover:text-primary dark:group-hover:text-secondary-400 transition-colors duration-300">
-                      {feature}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+                <p className="text-mountain-600 dark:text-mountain-300 mb-6">
+                  {service.description}
+                </p>
 
-              {/* Decorative corner elements */}
-              <motion.div
-                className="absolute -right-4 -top-4 w-16 h-16 border-t-2 border-r-2 border-primary/20 dark:border-secondary/40"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              />
-              <motion.div
-                className="absolute -left-4 -bottom-4 w-16 h-16 border-b-2 border-l-2 border-primary/20 dark:border-secondary/40"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              />
-            </motion.div>
-          </section>
-        ))}
-      </div>
+                {/* Features */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-3 text-mountain-800 dark:text-white">
+                    Key Features
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {service.features?.map((feature, i) => (
+                      <div key={i} className="flex items-center text-mountain-600 dark:text-mountain-400">
+                        <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Benefits */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-3 text-mountain-800 dark:text-white">
+                    Business Benefits
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {service.benefits.map((benefit, i) => (
+                      <div key={i} className="flex items-center text-mountain-600 dark:text-mountain-400">
+                        <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        {benefit}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2">
+                  {service.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-blue-50 dark:bg-mountain-700 rounded-full text-sm text-blue-600 dark:text-blue-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-mountain-900 via-purple-900 to-blue-900 text-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl mb-8 text-blue-200">
+              Schedule a free consultation to discuss your project with our experts.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
+              Book Free Consultation
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };

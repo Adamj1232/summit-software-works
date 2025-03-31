@@ -18,27 +18,31 @@ const Home = () => {
   const services = [
     {
       title: "Web Development",
-      description: "Full-stack solutions with modern frameworks and technologies that deliver exceptional user experiences.",
+      description: "Enterprise-grade web applications built with React, Next.js, and Node.js. Delivering scalable, secure, and high-performance solutions that drive business growth.",
       icon: "💻",
-      color: "from-blue-500 to-forest-500"
+      color: "from-blue-500 to-forest-500",
+      features: ["Scalable Architecture", "API Integration", "Cloud-Native"]
     },
     {
       title: "Software Design",
-      description: "Custom software applications engineered to solve complex problems and streamline operations.",
+      description: "Custom enterprise solutions that streamline operations and reduce costs. From microservices to cloud infrastructure, we build systems that scale with your business.",
       icon: "🔧",
-      color: "from-forest-500 to-forest-600"
+      color: "from-forest-500 to-forest-600",
+      features: ["Microservices", "Cloud Solutions", "Enterprise Integration"]
     },
     {
       title: "Web3 Integration",
-      description: "Blockchain solutions, smart contracts, and decentralized applications for the future of the internet.",
+      description: "Future-proof your business with blockchain technology. We specialize in smart contracts, DeFi solutions, and seamless Web3 integration for traditional applications.",
       icon: "🔗",
-      color: "from-forest-400 to-blue-500"
+      color: "from-forest-400 to-blue-500",
+      features: ["Smart Contracts", "DeFi Solutions", "Wallet Integration"]
     },
     {
       title: "AI Interface Development",
-      description: "Cutting-edge AI-powered interfaces and integrations that bring intelligent automation and natural interactions to your applications.",
+      description: "Harness the power of AI with custom interfaces and integrations. Transform user experiences with intelligent automation and natural language processing.",
       icon: "🤖",
-      color: "from-blue-400 to-purple-500"
+      color: "from-blue-400 to-purple-500",
+      features: ["LLM Integration", "Custom AI Models", "Automated Workflows"]
     }
   ];
 
@@ -71,7 +75,7 @@ const Home = () => {
               transition={{ duration: 0.8, type: "spring" }}
             >
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                Elevate Your Digital Presence
+                Transform Your Digital Future
               </h1>
             </motion.div>
             
@@ -81,8 +85,29 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl text-mountain-200 mb-8"
             >
-              We craft exceptional web experiences that combine stunning design with powerful functionality.
+              Innovative software solutions that drive growth. From enterprise applications to cutting-edge Web3 technology, we deliver results that matter.
             </motion.p>
+
+            {/* Add social proof metrics */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex justify-center gap-8 mb-8"
+            >
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-400">98%</div>
+                <div className="text-sm text-mountain-300">Client Satisfaction</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-400">50+</div>
+                <div className="text-sm text-mountain-300">Projects Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-pink-400">24/7</div>
+                <div className="text-sm text-mountain-300">Support & Maintenance</div>
+              </div>
+            </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -180,6 +205,22 @@ const Home = () => {
                     {service.description}
                   </p>
                   
+                  {/* Add feature tags */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {service.features.map((feature, i) => (
+                      <span
+                        key={i}
+                        className={`text-sm px-3 py-1 rounded-full ${
+                          hoveredService === index
+                            ? 'bg-white/20 text-white'
+                            : 'bg-mountain-100 dark:bg-mountain-700 text-mountain-600 dark:text-mountain-300'
+                        }`}
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                  
                   <motion.div
                     className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl opacity-0 group-hover:opacity-20 -z-10 blur-xl transition-all duration-500"
                     animate={hoveredService === index ? { scale: [0.8, 1.2], opacity: [0, 0.2] } : {}}
@@ -210,26 +251,58 @@ const Home = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h2 className="text-4xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-              Ready to Transform Your Digital Vision?
+              Ready to Accelerate Your Digital Growth?
             </h2>
             <p className="text-xl mb-8 text-blue-400">
-              Let's create something extraordinary together.
+              Join industry leaders who trust us with their digital transformation. Schedule a free consultation today.
             </p>
-            <Link to="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative px-8 py-4 bg-white rounded-lg font-semibold overflow-hidden group"
-              >
-                <span className="relative z-10 text-forest-800">Start the Conversation</span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-forest-200 to-blue-200"
-                  initial={{ x: "100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-            </Link>
+
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">10+</div>
+                <div className="text-sm text-blue-300">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">200+</div>
+                <div className="text-sm text-blue-300">Happy Clients</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">99%</div>
+                <div className="text-sm text-blue-300">Project Success</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">24/7</div>
+                <div className="text-sm text-blue-300">Expert Support</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative px-8 py-4 bg-white rounded-lg font-semibold overflow-hidden group"
+                >
+                  <span className="relative z-10 text-forest-800">Schedule Free Consultation</span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-forest-200 to-blue-200"
+                    initial={{ x: "100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.button>
+              </Link>
+              <Link to="/projects">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Explore Our Work
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
         </div>
 

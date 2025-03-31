@@ -148,7 +148,7 @@ const Footer: FC = () => {
               <motion.li variants={itemVariants} className="text-white/80">
                 <span className="block font-medium">Based Out Of Arvada, CO</span>
                 <br/>
-                <span className="block font-medium">Powering Web and Mobile Applications <span className="font-bold text-slate-300">Worldwide</span></span>
+                <span className="block font-medium">Powering Applications <span className="font-bold text-slate-300">Worldwide</span></span>
               </motion.li>
             </ul>
           </motion.div>

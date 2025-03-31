@@ -16,6 +16,10 @@ interface MetaTags {
   viewport: string;
   themeColor: string;
   rating: string;
+  geoRegion: string;
+  geoPlacename: string;
+  geoPosition: string;
+  icbm: string;
 }
 
 interface SchemaMarkup {
@@ -27,8 +31,19 @@ interface SchemaMarkup {
 export const BASE_URL = 'https://summitsoftwareworks.com';
 const DEFAULT_IMAGE = '/images/summit-software-og.jpg';
 const COMPANY_NAME = 'Summit Software Works';
-const DEFAULT_DESCRIPTION = 'Professional web development, software design, and AI interface solutions. We craft exceptional digital experiences with modern technologies.';
-const DEFAULT_KEYWORDS = 'web development, software design, AI interfaces, React development, TypeScript, modern web applications, custom software solutions, digital transformation';
+const DEFAULT_DESCRIPTION = 'Professional web development, software design, and AI interface solutions. We craft exceptional digital experiences with modern technologies. Serving Denver, Colorado and clients worldwide.';
+const DEFAULT_KEYWORDS = 'web development Denver, software design Colorado, AI interfaces Denver CO, React development, TypeScript, modern web applications, custom software solutions Denver, digital transformation Colorado';
+
+const LOCATION = {
+  region: 'US-CO',
+  city: 'Denver',
+  state: 'Colorado',
+  country: 'United States',
+  address: '1550 Wewatta Street',
+  postalCode: '80202',
+  latitude: '39.7392',
+  longitude: '-104.9903'
+};
 
 const ORGANIZATION_SCHEMA: SchemaMarkup = {
   "@context": "https://schema.org",
@@ -46,11 +61,22 @@ const ORGANIZATION_SCHEMA: SchemaMarkup = {
     "@type": "ContactPoint",
     telephone: "+1-303.918.2290",
     contactType: "customer service",
-    email: "info@summitsoftwareworks.com"
+    email: "info@summitsoftwareworks.com",
+    areaServed: LOCATION.country,
+    availableLanguage: ["English"]
   },
   address: {
     "@type": "PostalAddress",
-    addressCountry: "US"
+    streetAddress: LOCATION.address,
+    addressLocality: LOCATION.city,
+    addressRegion: LOCATION.state,
+    postalCode: LOCATION.postalCode,
+    addressCountry: LOCATION.country
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: LOCATION.latitude,
+    longitude: LOCATION.longitude
   }
 };
 
@@ -61,11 +87,25 @@ const SERVICE_SCHEMA: SchemaMarkup = {
   provider: {
     "@type": "Organization",
     name: COMPANY_NAME,
-    description: DEFAULT_DESCRIPTION
+    description: DEFAULT_DESCRIPTION,
+    areaServed: [
+      {
+        "@type": "City",
+        name: LOCATION.city,
+        containedInPlace: {
+          "@type": "State",
+          name: LOCATION.state
+        }
+      },
+      {
+        "@type": "Country",
+        name: LOCATION.country
+      }
+    ]
   },
   areaServed: {
     "@type": "Country",
-    name: "United States"
+    name: LOCATION.country
   },
   description: DEFAULT_DESCRIPTION,
   offers: {
@@ -74,7 +114,11 @@ const SERVICE_SCHEMA: SchemaMarkup = {
     availability: "https://schema.org/InStock",
     offerCount: "3",
     highPrice: "50000",
-    lowPrice: "1000"
+    lowPrice: "1000",
+    areaServed: {
+      "@type": "State",
+      name: LOCATION.state
+    }
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -85,7 +129,11 @@ const SERVICE_SCHEMA: SchemaMarkup = {
         itemOffered: {
           "@type": "Service",
           name: "Web Development",
-          description: "Full-stack solutions with modern frameworks and technologies that deliver exceptional user experiences."
+          description: "Full-stack solutions with modern frameworks and technologies that deliver exceptional user experiences.",
+          areaServed: {
+            "@type": "City",
+            name: LOCATION.city
+          }
         }
       },
       {
@@ -93,7 +141,11 @@ const SERVICE_SCHEMA: SchemaMarkup = {
         itemOffered: {
           "@type": "Service",
           name: "Software Design",
-          description: "Custom software applications engineered to solve complex problems and streamline operations."
+          description: "Custom software applications engineered to solve complex problems and streamline operations.",
+          areaServed: {
+            "@type": "State",
+            name: LOCATION.state
+          }
         }
       },
       {
@@ -101,7 +153,11 @@ const SERVICE_SCHEMA: SchemaMarkup = {
         itemOffered: {
           "@type": "Service",
           name: "AI Interface Development",
-          description: "Cutting-edge AI-powered interfaces and integrations that bring intelligent automation and natural interactions to your applications."
+          description: "Cutting-edge AI-powered interfaces and integrations that bring intelligent automation and natural interactions to your applications.",
+          areaServed: {
+            "@type": "Country",
+            name: LOCATION.country
+          }
         }
       }
     ]
@@ -115,9 +171,9 @@ export const generateMetaTags = (
   url: string,
   imageUrl: string = DEFAULT_IMAGE
 ): MetaTags => ({
-  title: `${title} | ${COMPANY_NAME} - Web & Software Development`,
-  description: description.slice(0, 160), // Ensure description is not too long
-  keywords: `${keywords}, web development, software design, AI interfaces`,
+  title: `${title} | ${COMPANY_NAME} - Web & Software Development in ${LOCATION.city}`,
+  description: description.slice(0, 160),
+  keywords: `${keywords}, ${LOCATION.city} web development, ${LOCATION.state} software design`,
   ogTitle: title,
   ogDescription: description.slice(0, 160),
   ogImage: imageUrl,
@@ -127,10 +183,14 @@ export const generateMetaTags = (
   twitterImage: imageUrl,
   author: COMPANY_NAME,
   language: 'en-US',
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
   viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
   themeColor: '#1a1a1a',
-  rating: 'General'
+  rating: 'General',
+  geoRegion: LOCATION.region,
+  geoPlacename: `${LOCATION.city}, ${LOCATION.state}`,
+  geoPosition: `${LOCATION.latitude};${LOCATION.longitude}`,
+  icbm: `${LOCATION.latitude}, ${LOCATION.longitude}`
 });
 
 const SCHEMA_MAPPINGS: Record<string, SchemaMarkup> = {
@@ -147,12 +207,16 @@ const SCHEMA_MAPPINGS: Record<string, SchemaMarkup> = {
   portfolio: {
     "@context": "https://schema.org",
     "@type": ["CollectionPage", "CreativeWork"],
-    name: "Our Portfolio | Summit Software Works",
-    description: "Explore our diverse range of projects showcasing our expertise in web development, software design, and digital solutions.",
+    name: `Our Portfolio | ${COMPANY_NAME} - ${LOCATION.city} Software Development`,
+    description: `Explore our diverse range of projects showcasing our expertise in web development, software design, and digital solutions in ${LOCATION.city}, ${LOCATION.state}.`,
     url: `${BASE_URL}/portfolio`,
     creator: {
       "@type": "Organization",
-      name: COMPANY_NAME
+      name: COMPANY_NAME,
+      location: {
+        "@type": "Place",
+        address: ORGANIZATION_SCHEMA.address
+      }
     },
     about: {
       "@type": "Thing",
@@ -162,13 +226,15 @@ const SCHEMA_MAPPINGS: Record<string, SchemaMarkup> = {
   contact: {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Contact Us | Summit Software Works",
-    description: "Get in touch with our team to discuss your project needs and how we can help bring your vision to life.",
+    name: `Contact Us | ${COMPANY_NAME} - ${LOCATION.city} Software Development`,
+    description: `Get in touch with our team in ${LOCATION.city} to discuss your project needs and how we can help bring your vision to life.`,
     url: `${BASE_URL}/contact`,
     mainEntity: {
       "@type": "Organization",
       name: COMPANY_NAME,
-      contactPoint: ORGANIZATION_SCHEMA.contactPoint
+      contactPoint: ORGANIZATION_SCHEMA.contactPoint,
+      address: ORGANIZATION_SCHEMA.address,
+      geo: ORGANIZATION_SCHEMA.geo
     }
   }
 };
