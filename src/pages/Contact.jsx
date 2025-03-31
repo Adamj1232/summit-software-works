@@ -95,7 +95,7 @@ const Contact = () => {
             className="text-center my-6 sm:my-12"
           >
             <h1 className="section-title">Let's Build Something Amazing Together</h1>
-            <p className="text-xl text-mountain-600 mt-4">
+            <p className="text-xl text-mountain-400 mt-4">
               Schedule a free consultation to discuss how we can help you reach new heights.
             </p>
           </motion.div>
@@ -116,7 +116,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="firstName" className="block text-sm font-medium text-mountain-500">
                         First name
                       </label>
                       <div className="mt-1">
@@ -133,7 +133,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="lastName" className="block text-sm font-medium text-mountain-500">
                         Last name
                       </label>
                       <div className="mt-1">
@@ -150,7 +150,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="email" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="email" className="block text-sm font-medium text-mountain-500">
                         Email
                       </label>
                       <div className="mt-1">
@@ -168,7 +168,7 @@ const Contact = () => {
                     </div>
                     
                     <div className="sm:col-span-2">
-                      <label htmlFor="projectType" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="projectType" className="block text-sm font-medium text-mountain-500">
                         What type of project are you looking to build?
                       </label>
                       <div className="mt-1">
@@ -192,7 +192,7 @@ const Contact = () => {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="budget" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="budget" className="block text-sm font-medium text-mountain-500">
                         Estimated Budget
                       </label>
                       <div className="mt-1">
@@ -215,7 +215,7 @@ const Contact = () => {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="timeline" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="timeline" className="block text-sm font-medium text-mountain-500">
                         When would you like to start?
                       </label>
                       <div className="mt-1">
@@ -238,7 +238,7 @@ const Contact = () => {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="message" className="block text-sm font-medium text-mountain-700">
+                      <label htmlFor="message" className="block text-sm font-medium text-mountain-500">
                         Tell us about your project
                       </label>
                       <div className="mt-1">
@@ -276,14 +276,14 @@ const Contact = () => {
                 className="text-center space-y-6 py-12"
               >
                 <h2 className="text-2xl font-bold text-mountain-800">Thank you for reaching out!</h2>
-                <p className="text-lg text-mountain-600">
+                <p className="text-lg text-mountain-400">
                   We've received your message and will get back to you within 24 hours with next steps for your consultation.
                 </p>
                 <div className="mt-8 p-6 bg-forest-50 rounded-lg">
                   <h3 className="text-xl font-semibold text-forest-700 mb-4">
                     What happens next?
                   </h3>
-                  <ul className="text-left space-y-4 text-mountain-600">
+                  <ul className="text-left space-y-4 text-mountain-400">
                     <li className="flex items-start">
                       <span className="mr-3">1.</span>
                       <span>You'll receive an immediate confirmation email with helpful resources.</span>

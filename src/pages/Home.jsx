@@ -253,27 +253,27 @@ const Home = () => {
             <h2 className="text-4xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               Ready to Accelerate Your Digital Growth?
             </h2>
-            <p className="text-xl mb-8 text-blue-400">
+            <p className="text-xl mb-8 text-blue-400 dark:text-blue-400">
               Join industry leaders who trust us with their digital transformation. Schedule a free consultation today.
             </p>
 
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">10+</div>
-                <div className="text-sm text-blue-300">Years Experience</div>
+                <div className="text-3xl font-bold text-blue-600 dark:text-white mb-2">10+</div>
+                <div className="text-sm text-blue-800 dark:text-blue-300">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">200+</div>
-                <div className="text-sm text-blue-300">Happy Clients</div>
+                <div className="text-3xl font-bold text-blue-600 dark:text-white mb-2">200+</div>
+                <div className="text-sm text-blue-800 dark:text-blue-300">Happy Clients</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">99%</div>
-                <div className="text-sm text-blue-300">Project Success</div>
+                <div className="text-3xl font-bold text-blue-600 dark:text-white mb-2">99%</div>
+                <div className="text-sm text-blue-800 dark:text-blue-300">Project Success</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">24/7</div>
-                <div className="text-sm text-blue-300">Expert Support</div>
+                <div className="text-3xl font-bold text-blue-600 dark:text-white mb-2">24/7</div>
+                <div className="text-sm text-blue-800 dark:text-blue-300">Expert Support</div>
               </div>
             </div>
 
@@ -297,7 +297,7 @@ const Home = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                  className="px-8 py-4 bg-transparent border-2 border-mountain-600 dark:border-white text-mountain-600 dark:text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
                 >
                   Explore Our Work
                 </motion.button>
