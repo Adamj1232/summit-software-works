@@ -47,11 +47,11 @@ const DEFAULT_KEYWORDS = 'web development Denver, software design Colorado, AI i
 
 const LOCATION: Location = {
   region: 'US-CO',
-  city: 'Arvada',
+  city: 'Denver',
   state: 'Colorado',
   country: 'United States',
-  address: '7068 Cole Ct.',
-  postalCode: '80004',
+  address: '1550 Wewatta Street',
+  postalCode: '80202',
   latitude: '39.7392',
   longitude: '-104.9903'
 };

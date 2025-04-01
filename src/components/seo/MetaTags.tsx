@@ -25,7 +25,7 @@ const generateMetaTags = (
   imageUrl = "https://summitsoftwareworks.com/og-image.png",
   location = {
     region: "US-CO",
-    city: "Arvada",
+    city: "Denver",
     state: "Colorado",
     country: "United States",
   }
