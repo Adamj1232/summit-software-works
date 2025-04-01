@@ -2,26 +2,72 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:;">
+    
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://rsms.me/inter/inter.css">
+    
+    <!-- PWA -->
     <link rel="icon" href="%PUBLIC_URL%/logo192.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0891b2" />
-    <meta
-      name="description"
-      content="Summit Software Works - Innovative network solutions for modern businesses. We specialize in cutting-edge software development and digital transformation."
-    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="%PUBLIC_URL%/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Viewport and Theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#0891b2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
     
-    <title>Summit Software Works | Innovative Network Solutions</title>
+    <!-- Fallback SEO (will be overwritten by MetaTags component) -->
+    <meta name="description" content="Summit Software Works - Professional web development, web3, and software solutions in Denver, Colorado. Specializing in Web and Mobile App development, legacy application troubleshooting, dapps, smart contracts, and blockchain development." />
+    <meta name="keywords" content="web development Denver, software development Colorado, web3, SEO, browser extensions, cloud services, React, TypeScript" />
+    <meta name="author" content="Summit Software Works" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph Fallback -->
+    <meta property="og:title" content="Summit Software Works | Denver Web Development" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://summitsoftwareworks.com" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <!-- Twitter Fallback -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@summitsoftware" />
+    
+    <!-- Fonts with display swap for better performance -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Font Awesome with async loading -->
+    <link rel="preload" href="%PUBLIC_URL%/node_modules/@fortawesome/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="%PUBLIC_URL%/node_modules/@fortawesome/fontawesome-free/css/all.min.css"></noscript>
+    
+    <title>Summit Software Works | Denver Web Development & Software Solutions</title>
+    
+    <!-- Verification tags -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+    <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- No-JavaScript Fallback -->
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/no-javascript.html">
+    </noscript>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="padding: 20px; text-align: center;">
+        <h1>JavaScript Required</h1>
+        <p>We're sorry, but Summit Software Works requires JavaScript to function properly. Please enable JavaScript to continue.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>
