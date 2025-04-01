@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { RouteObject } from 'react-router-dom';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import AIAssistant from './pages/AIAssistant';
 
 // Lazy load components with chunk names for better debugging
 const Home = lazy(() => import(/* webpackChunkName: "home" */ './pages/Home'));
@@ -39,6 +40,10 @@ export const routes: RouteObject[] = [
   {
     path: '/services',
     element: withSuspense(Services),
+  },
+  {
+    path: '/ai-assistant',
+    element: <AIAssistant />
   },
   {
     path: '*',

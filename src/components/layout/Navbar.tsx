@@ -7,14 +7,15 @@ import ThemeToggle from '../ThemeToggle';
 interface NavItem {
   name: string;
   path: string;
+  pageType: string;
 }
 
 const navItems: NavItem[] = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Home', path: '/', pageType: 'home' },
+  { name: 'About', path: '/about', pageType: 'about' },
+  { name: 'Services', path: '/services', pageType: 'services' },
+  { name: 'Projects', path: '/projects', pageType: 'projects' },
+  { name: 'Contact', path: '/contact', pageType: 'contact' },
 ];
 
 const NavLink = memo(({ item, isActive }: { item: NavItem; isActive: boolean }) => (
@@ -25,6 +26,8 @@ const NavLink = memo(({ item, isActive }: { item: NavItem; isActive: boolean }) 
         ? 'text-white font-semibold' 
         : 'text-white/90 hover:text-white'
       }`}
+    aria-label={`Navigate to ${item.name} page`}
+    data-page-type={item.pageType}
   >
     <span className="relative z-10">
       {item.name}
@@ -81,6 +84,24 @@ const useIsDesktop = () => {
 
   return isDesktop;
 };
+
+// const GoogleBusinessBadge = () => (
+//   <div className="google-badge">
+//     <a 
+//       href="https://g.page/r/YOUR_PLACE_ID/review" 
+//       target="_blank" 
+//       rel="noopener noreferrer"
+//       className="flex items-center space-x-2 px-3 py-1.5 bg-white rounded-md shadow-sm hover:shadow-md transition-all"
+//     >
+//       <img 
+//         src="/google-g-logo.svg" 
+//         alt="Google" 
+//         className="w-4 h-4" 
+//       />
+//       <span className="text-sm font-medium text-gray-700">Review us on Google</span>
+//     </a>
+//   </div>
+// );
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

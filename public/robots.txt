@@ -1,6 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Allow: /ai-assistant
 
 # Sitemaps
 Sitemap: https://summitsoftwareworks.com/sitemap.xml
@@ -33,3 +34,14 @@ Crawl-delay: 20
 
 User-agent: SemrushBot
 Crawl-delay: 20
+
+# Specific directives for AI crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /ai-assistant
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Allow: /ai-assistant
+Crawl-delay: 1
