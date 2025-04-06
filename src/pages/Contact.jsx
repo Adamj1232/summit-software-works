@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import MetaTags from '../components/seo/MetaTags';
 
 const Contact = () => {
   useEffect(() => {
@@ -86,6 +87,14 @@ const Contact = () => {
 
   return (
     <div className="page-transition">
+      <MetaTags 
+        title="Contact Summit Software Works | Denver Software Development"
+        description="Get in touch with Summit Software Works, your expert Denver-based software development partner. Discuss your project needs for web development, Web3, AI, or custom software."
+        keywords="contact software company Denver, web development consultation Colorado, get quote custom software, blockchain development contact, AI integration consultation"
+        url="/contact"
+        pageType="contact"
+      />
+
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div

@@ -10,6 +10,7 @@ const NotFound = () => {
         description="The page you're looking for doesn't exist. Return to our homepage to explore our software development services."
         url="/404"
         keywords="404, not found, summit software works, software development"
+        pageType="error"
       />
       <div className="min-h-screen flex items-center justify-center p-4 bg-neutral-light dark:bg-mountain-900">
         <motion.div

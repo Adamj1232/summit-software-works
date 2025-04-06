@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import MetaTags from '../components/seo/MetaTags';
 
 const Home = () => {
   const [hoveredService, setHoveredService] = useState(null);
@@ -17,37 +18,44 @@ const Home = () => {
 
   const services = [
     {
-      title: "Web Development",
-      description: "Enterprise-grade web applications built with React, Next.js, and Node.js. Delivering scalable, secure, and high-performance solutions that drive business growth.",
+      title: "Custom Web Development",
+      description: "Drive growth with scalable, high-performance web applications. We build secure, user-focused experiences using React, Next.js, and Node.js, tailored for Denver businesses and beyond.",
       icon: "💻",
       color: "from-blue-500 to-forest-500",
-      features: ["Scalable Architecture", "API Integration", "Cloud-Native"]
+      features: ["User-Centric Design", "Scalable Architecture", "API Integration", "Cloud Deployment"]
     },
     {
-      title: "Software Design",
-      description: "Custom enterprise solutions that streamline operations and reduce costs. From microservices to cloud infrastructure, we build systems that scale with your business.",
+      title: "Enterprise Software Solutions",
+      description: "Streamline operations and cut costs with robust custom software. We modernize legacy systems and architect cloud-native solutions that adapt and scale with your enterprise.",
       icon: "🔧",
       color: "from-forest-500 to-forest-600",
-      features: ["Microservices", "Cloud Solutions", "Enterprise Integration"]
+      features: ["Legacy Modernization", "Microservices", "Cloud Solutions", "Process Automation"]
     },
     {
-      title: "Web3 Integration",
-      description: "Future-proof your business with blockchain technology. We specialize in smart contracts, DeFi solutions, and seamless Web3 integration for traditional applications.",
+      title: "Web3 & Blockchain Development",
+      description: "Leverage the power of decentralization. We build secure smart contracts, develop dApps, and integrate blockchain technology to unlock new opportunities for your business.",
       icon: "🔗",
       color: "from-forest-400 to-blue-500",
-      features: ["Smart Contracts", "DeFi Solutions", "Wallet Integration"]
+      features: ["Smart Contracts (Solidity)", "dApp Development", "DeFi Solutions", "Blockchain Integration"]
     },
     {
-      title: "AI Interface Development",
-      description: "Harness the power of AI with custom interfaces and integrations. Transform user experiences with intelligent automation and natural language processing.",
+      title: "AI Integration & Development",
+      description: "Enhance your applications with artificial intelligence. We integrate LLMs, build custom AI models, and develop intelligent automation to boost efficiency and user engagement.",
       icon: "🤖",
       color: "from-blue-400 to-purple-500",
-      features: ["LLM Integration", "Custom AI Models", "Automated Workflows"]
+      features: ["LLM Integration (OpenAI)", "Custom AI Models", "Data Analytics", "Workflow Automation"]
     }
   ];
 
   return (
     <div className="page-transition" onMouseMove={handleMouseMove}>
+      <MetaTags 
+        title="Summit Software Works | Denver Web Development & Custom Software"
+        description="Expert Denver software development agency specializing in custom web applications, Web3/blockchain, AI integration, and professional website design. Partner with us to transform your digital future."
+        url="/"
+        pageType="home"
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-mountain-900 to-mountain-800 overflow-hidden">
         {/* Dynamic mountain peaks background */}
@@ -75,7 +83,7 @@ const Home = () => {
               transition={{ duration: 0.8, type: "spring" }}
             >
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                Transform Your Digital Future
+                Build Your Digital Advantage
               </h1>
             </motion.div>
             
@@ -85,7 +93,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl text-mountain-200 mb-8"
             >
-              Innovative software solutions that drive growth. From enterprise applications to cutting-edge Web3 technology, we deliver results that matter.
+              Partner with Summit Software Works, your expert Denver software development team. We craft high-performance web applications, Web3 solutions, and AI integrations that deliver measurable results.
             </motion.p>
 
             {/* Add social proof metrics */}
@@ -121,7 +129,7 @@ const Home = () => {
                   whileTap={{ scale: 0.95 }}
                   className="relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white overflow-hidden group"
                 >
-                  <span className="relative z-10">Start Your Project</span>
+                  <span className="relative z-10">Get Your Free Consultation</span>
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500"
                     initial={{ x: "100%" }}
@@ -155,10 +163,10 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 dark:from-secondary-400 dark:to-primary-400">
-              Our Expertise
+              Solutions We Engineer
             </h2>
             <p className="text-xl text-mountain-700 dark:text-mountain-200 max-w-2xl mx-auto">
-              We deliver comprehensive solutions that help businesses thrive in the digital landscape.
+              From concept to deployment, we provide end-to-end software development services tailored to your unique goals.
             </p>
           </motion.div>
 

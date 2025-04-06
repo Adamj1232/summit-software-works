@@ -1,6 +1,8 @@
 import { FC, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useScroll } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
+import MetaTags from '../components/seo/MetaTags';
+import { Link } from 'react-router-dom';
 
 const Services: FC = () => {
   const mouseX = useMotionValue(0);
@@ -22,208 +24,129 @@ const Services: FC = () => {
   const services = [
     {
       id: 'enterprise-solutions',
-      title: 'Enterprise Solutions & Digital Transformation',
-      description: 'Transform your business with enterprise-grade digital solutions. We specialize in modernizing legacy systems, implementing cloud-native architectures, and delivering scalable applications that drive operational efficiency.',
+      title: 'Modernize Your Business: Enterprise Software & Cloud',
+      description: 'Upgrade legacy systems, migrate to the cloud (AWS, Azure), and build scalable enterprise applications. We help Denver businesses automate processes and enhance operational efficiency for significant cost savings.',
       features: [
         'Legacy System Modernization',
-        'Cloud Migration & Integration',
-        'Enterprise Application Development',
-        'Business Process Automation',
-        'Data Analytics & Business Intelligence'
-      ],
-      benefits: [
-        '40% average reduction in operational costs',
-        'Up to 99.99% system uptime',
-        'Enhanced security and compliance',
-        'Seamless third-party integrations'
-      ],
-      technologies: ['Azure', 'AWS', 'Kubernetes', 'Docker', 'Microservices']
-    },
-    {
-      id: 'ai-ml-solutions',
-      title: 'AI & Machine Learning Integration',
-      description: 'Harness the power of artificial intelligence to gain competitive advantage. Our AI solutions help automate processes, extract insights from data, and create intelligent user experiences.',
-      features: [
-        'Custom AI Model Development',
-        'Natural Language Processing',
-        'Predictive Analytics',
-        'Computer Vision Solutions',
-        'AI-Powered Process Automation'
-      ],
-      benefits: [
-        'Up to 60% reduction in manual tasks',
-        'Real-time decision support',
-        'Enhanced customer experiences',
-        'Data-driven insights'
-      ],
-      technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Azure ML', 'Google AI']
-    },
-    {
-      id: 'web-development',
-      title: 'Modern Web Applications',
-      description: "Build scalable, high-performance web applications that deliver exceptional user experiences. Our full-stack expertise ensures your web presence stands out in today's competitive landscape.",
-      features: [
-        'Progressive Web Apps (PWA)',
-        'Single Page Applications (SPA)',
-        'Responsive Design & Mobile-First',
-        'Real-time Features & WebSocket',
+        'Cloud Migration & Architecture (AWS/Azure)',
+        'Custom Enterprise Application Development',
+        'Business Process Automation (BPA)',
         'API Development & Integration'
       ],
       benefits: [
-        '50% faster load times',
-        'Improved user engagement',
-        'Higher conversion rates',
-        'Cross-platform compatibility'
+        'Reduce operational costs by up to 40%',
+        'Achieve 99.99% system uptime & reliability',
+        'Enhance data security and compliance',
+        'Improve scalability and future-readiness'
       ],
-      technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'GraphQL']
+      technologies: ['Azure', 'AWS', 'Kubernetes', 'Docker', 'Microservices', 'Java', 'Python']
+    },
+    {
+      id: 'ai-ml-solutions',
+      title: 'Unlock Potential with AI & Machine Learning',
+      description: 'Leverage AI to gain a competitive edge. We develop custom AI models, implement NLP, predictive analytics, and integrate LLMs (like OpenAI API) to automate tasks and derive actionable insights.',
+      features: [
+        'Custom AI/ML Model Development',
+        'Natural Language Processing (NLP)',
+        'Predictive Analytics & Forecasting',
+        'LLM & OpenAI API Integration',
+        'AI-Powered Automation'
+      ],
+      benefits: [
+        'Automate up to 60% of manual tasks',
+        'Gain real-time, data-driven insights',
+        'Personalize customer experiences',
+        'Improve decision-making accuracy'
+      ],
+      technologies: ['TensorFlow', 'PyTorch', 'OpenAI API', 'Python', 'Azure ML', 'Google AI Cloud']
+    },
+    {
+      id: 'web-development',
+      title: 'High-Performance Web Applications',
+      description: "Engage users with exceptional web experiences. Our Denver-based team builds fast, scalable PWAs and SPAs using React, Next.js, and TypeScript, focusing on optimal performance and conversion.",
+      features: [
+        'Progressive Web Apps (PWA)',
+        'Single Page Applications (SPA)',
+        'Responsive & Mobile-First Design',
+        'Real-time Features (WebSocket)',
+        'Headless CMS Integration'
+      ],
+      benefits: [
+        'Achieve ~50% faster load times',
+        'Increase user engagement & retention',
+        'Boost conversion rates significantly',
+        'Seamless cross-platform experience'
+      ],
+      technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'GraphQL', 'TailwindCSS']
     },
     {
       id: 'web3-blockchain',
-      title: 'Web3 & Blockchain Solutions',
-      description: 'Stay ahead of the curve with cutting-edge blockchain technology. We help businesses implement secure, transparent, and efficient decentralized solutions.',
+      title: 'Innovate with Web3 & Blockchain',
+      description: 'Step into the future of the internet. We are Colorado\'s experts in secure smart contract development (Solidity), dApp creation, DeFi platforms, and integrating blockchain into your operations.',
       features: [
-        'Smart Contract Development',
-        'DeFi Platform Development',
-        'NFT Marketplace Creation',
-        'Blockchain Integration',
-        'Crypto Payment Solutions'
+        'Secure Smart Contract Development & Audit',
+        'Decentralized Application (dApp) Development',
+        'NFT Marketplace & Platform Creation',
+        'Blockchain Integration Services',
+        'Custom DeFi Solutions'
       ],
       benefits: [
-        'Enhanced security and transparency',
-        'Reduced transaction costs',
-        'Automated trust mechanisms',
-        'New revenue streams'
+        'Enhance security & data transparency',
+        'Reduce transaction costs & intermediaries',
+        'Automate trust with smart contracts',
+        'Unlock new decentralized business models'
       ],
-      technologies: ['Ethereum', 'Solidity', 'Web3.js', 'IPFS', 'Hardhat']
+      technologies: ['Ethereum', 'Solidity', 'Web3.js/Ethers.js', 'IPFS', 'Hardhat/Foundry', 'Polygon']
     },
     {
       id: 'mobile-development',
-      title: 'Enterprise Mobile Solutions',
-      description: 'Deliver seamless mobile experiences across platforms. Our mobile solutions combine native performance with cross-platform efficiency to maximize your ROI.',
+      title: 'Cross-Platform & Native Mobile Apps',
+      description: 'Reach your users anywhere with seamless mobile apps. We build high-performance native (iOS/Android) and cross-platform (React Native) applications focused on user experience and business goals.',
       features: [
-        'Native iOS & Android Apps',
-        'Cross-Platform Development',
-        'Enterprise Mobile Solutions',
-        'Mobile Security & Compliance',
-        'Offline-First Architecture'
+        'Native iOS (Swift) & Android (Kotlin) Apps',
+        'Cross-Platform (React Native) Development',
+        'Enterprise Mobile Application Strategy',
+        'Mobile Backend & API Integration',
+        'App Store Deployment & Maintenance'
       ],
       benefits: [
-        'Reduced development costs',
-        '30% faster time-to-market',
-        'Consistent user experience',
-        'Enterprise-grade security'
+        'Reduce development costs with cross-platform',
+        'Accelerate time-to-market by ~30%',
+        'Deliver consistent cross-device UX',
+        'Ensure enterprise-grade security & performance'
       ],
-      technologies: ['React Native', 'Swift', 'Kotlin', 'Flutter', 'Firebase']
+      technologies: ['React Native', 'Swift', 'Kotlin', 'Flutter', 'Firebase', 'AWS Amplify']
+    },
+    {
+      id: 'browser-extensions',
+      title: 'Custom Browser Extension Development',
+      description: 'Enhance workflow and productivity with powerful browser extensions. We develop secure and intuitive extensions for Chrome, Firefox, and other browsers tailored to your specific needs.',
+      features: [
+        'Chrome Extension Development',
+        'Firefox Add-on Development',
+        'Cross-Browser Compatibility',
+        'API Integration for Extensions',
+        'Extension Security Best Practices'
+      ],
+      benefits: [
+        'Automate repetitive tasks',
+        'Integrate seamlessly with web services',
+        'Improve user productivity',
+        'Create unique browser-based tools'
+      ],
+      technologies: ['JavaScript', 'HTML/CSS', 'React', 'WebExtensions API', 'Node.js (for backend)']
     }
   ];
 
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-mountain-900" onMouseMove={handleMouseMove}>
-      <Helmet>
-        <title>Custom Enterprise Software Development Services | AI, Web3, Cloud Solutions</title>
-        <meta name="description" content="Transform your business with enterprise-grade software solutions. Specializing in AI/ML integration, cloud-native applications, Web3 development, and digital transformation. 10+ years of delivering scalable solutions." />
-        <meta property="og:title" content="Enterprise Software Development & Digital Transformation Services | Summit Software Works" />
-        <meta property="og:description" content="Leading software development company delivering AI-powered solutions, cloud-native applications, and Web3 integration. Transform your business with our enterprise-grade development services." />
-        <meta name="keywords" content="enterprise software development, AI integration, cloud-native applications, digital transformation, custom software development, Web3 solutions, React development, Node.js, TypeScript, microservices architecture, DevOps automation, enterprise mobile apps" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="author" content="Summit Software Works" />
-        <meta name="geo.region" content="US" />
-        <meta name="geo.placename" content="Denver" />
-        <link rel="canonical" href="https://summitsoftwareworks.com/services" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Enterprise Software Development Services",
-            "description": "Transform your business with our enterprise software development services. Specializing in AI integration, cloud-native solutions, and digital transformation.",
-            "provider": {
-              "@type": "Organization",
-              "name": "Summit Software Works",
-              "url": "https://summitsoftwareworks.com"
-            },
-            "offers": {
-              "@type": "AggregateOffer",
-              "offers": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Enterprise Solutions & Digital Transformation",
-                    "description": "Transform your business with enterprise-grade digital solutions. Modernize legacy systems and implement cloud-native architectures.",
-                    "serviceType": ["Digital Transformation", "Legacy Modernization", "Cloud Migration"],
-                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "AI & Machine Learning Integration",
-                    "description": "Custom AI model development, natural language processing, and intelligent automation solutions.",
-                    "serviceType": ["AI Development", "Machine Learning", "Process Automation"],
-                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Modern Web Applications",
-                    "description": "Full-stack web development using React, Next.js, and Node.js with focus on performance and scalability.",
-                    "serviceType": ["Web Development", "Full Stack Development", "API Development"],
-                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Web3 & Blockchain Solutions",
-                    "description": "Smart contract development, DeFi platforms, and blockchain integration services.",
-                    "serviceType": ["Blockchain Development", "Smart Contracts", "DeFi Solutions"],
-                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Enterprise Mobile Solutions",
-                    "description": "Cross-platform mobile development with React Native and native iOS/Android expertise.",
-                    "serviceType": ["Mobile Development", "Cross Platform Development", "Enterprise Mobile"],
-                    "provider": {"@type": "Organization", "name": "Summit Software Works"}
-                  }
-                }
-              ]
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "United States"
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Software Development Services",
-              "itemListElement": [
-                {
-                  "@type": "Service",
-                  "name": "Enterprise Software Development",
-                  "description": "Custom enterprise software solutions that drive digital transformation and operational efficiency."
-                },
-                {
-                  "@type": "Service",
-                  "name": "AI & Machine Learning",
-                  "description": "Intelligent automation and data-driven solutions powered by cutting-edge AI technology."
-                },
-                {
-                  "@type": "Service",
-                  "name": "Cloud-Native Development",
-                  "description": "Scalable, resilient applications built on modern cloud infrastructure."
-                }
-              ]
-            }
-          })}
-        </script>
-      </Helmet>
+      <MetaTags 
+        title="Software Development Services | Summit Software Works - Denver, CO"
+        description="Summit Software Works offers expert software development services in Denver, CO including custom web apps, Web3/blockchain, AI integration, mobile apps, browser extensions, and legacy system modernization."
+        keywords="software development services Denver, web development agency Colorado, Web3 development company, AI integration services, mobile app developers Denver, browser extension development, React developers, custom software solutions"
+        url="/services"
+        pageType="services"
+      />
 
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-b from-mountain-900 to-primary-600 text-white overflow-hidden">
@@ -384,13 +307,13 @@ const Services: FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Enterprise Software Solutions
+              Develop Your Competitive Edge
             </motion.h1>
             <motion.p
               className="text-xl text-white/90 hover:text-white transition-colors duration-300 mb-8"
               style={{ y }}
             >
-              Transform your business with cutting-edge technology solutions that drive growth and innovation.
+              Explore our suite of software development services designed to propel your Denver business forward.
             </motion.p>
 
             {/* Trust Indicators */}
@@ -498,18 +421,20 @@ const Services: FC = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h2 className="text-4xl font-bold mb-6">
-              Ready to Transform Your Business?
+              Ready to Start Your Transformation?
             </h2>
             <p className="text-xl mb-8 text-blue-200">
-              Schedule a free consultation to discuss your project with our experts.
+              Let's discuss how our software development expertise can achieve your specific business goals. Schedule your free consultation today.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-            >
-              Book Free Consultation
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              >
+                Book Your Free Consultation
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
