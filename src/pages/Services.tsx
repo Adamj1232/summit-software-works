@@ -149,7 +149,7 @@ const Services: FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-b from-mountain-900 to-primary-600 text-white overflow-hidden">
+      <section className="relative py-32 pb-16 bg-gradient-to-b from-mountain-900 to-primary-600 text-white overflow-hidden">
         <div className="absolute inset-0">
           {/* Animated grid background */}
           <div className="absolute inset-0 animate-gradient-shift" 
