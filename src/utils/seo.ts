@@ -39,7 +39,7 @@ interface Location {
   longitude: string;
 }
 
-export const BASE_URL = 'https://summitsoftwareworks.com';
+export const BASE_URL = 'https://www.summitsoftwareworks.com';
 const DEFAULT_IMAGE = '/images/summit-software-og.jpg';
 const COMPANY_NAME = 'Summit Software Works';
 const DEFAULT_DESCRIPTION = 'Expert Denver-based software development specializing in professional website design, custom web applications, Web3/blockchain solutions (dapps, smart contracts), AI integration, browser extensions, and legacy application troubleshooting. We build high-performance, scalable software.';
