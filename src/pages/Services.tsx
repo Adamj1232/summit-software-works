@@ -1,6 +1,5 @@
 import { FC, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useScroll } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import MetaTags from '../components/seo/MetaTags';
 import { Link } from 'react-router-dom';
 

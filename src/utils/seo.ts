@@ -1,4 +1,3 @@
-// src/utils/seo.ts
 interface MetaTags {
   title: string;
   description: string;
@@ -97,9 +96,6 @@ const ORGANIZATION_SCHEMA_BASE: SchemaMarkup = {
   ],
   sameAs: [
     "https://www.linkedin.com/company/summit-software-works",
-    // "https://www.linkedin.com/company/summit-software-works",
-    // "https://github.com/summit-software",
-    // "https://twitter.com/summitsoftware"
   ],
   contactPoint: {
     "@type": "ContactPoint",

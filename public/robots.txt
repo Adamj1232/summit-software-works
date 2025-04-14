@@ -4,7 +4,7 @@ Allow: /
 Allow: /ai-assistant
 
 # Sitemaps
-Sitemap: https://summitsoftwareworks.com/sitemap.xml
+Sitemap: https://www.summitsoftwareworks.com/sitemap.xml
 
 # Optimize crawling
 Crawl-delay: 10
