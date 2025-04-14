@@ -1,4 +1,7 @@
-import { BASE_URL } from './seo';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateSitemap = void 0;
+const seo_1 = require("./seo");
 const routes = [
     { path: '/', changefreq: 'weekly', priority: 1.0 },
     { path: '/about', changefreq: 'monthly', priority: 0.8 },
@@ -6,10 +9,10 @@ const routes = [
     { path: '/projects', changefreq: 'weekly', priority: 0.9 },
     { path: '/contact', changefreq: 'monthly', priority: 0.7 },
 ];
-export const generateSitemap = () => {
+const generateSitemap = () => {
     const today = new Date().toISOString();
     const urls = routes.map(route => ({
-        loc: `${BASE_URL}${route.path}`,
+        loc: `${seo_1.BASE_URL}${route.path}`,
         lastmod: today,
         changefreq: route.changefreq,
         priority: route.priority
@@ -29,3 +32,4 @@ export const generateSitemap = () => {
       ${xmlUrls}
     </urlset>`;
 };
+exports.generateSitemap = generateSitemap;

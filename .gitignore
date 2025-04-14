@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 .vercel
 
-# Compiled helper scripts output (REMOVED)
-# dist-scripts/
+# Compiled helper scripts output
+dist-scripts/

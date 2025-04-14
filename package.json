@@ -41,8 +41,9 @@
   "scripts": {
     "start": "BROWSER=none react-scripts start",
     "dev": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "postbuild": "tsx scripts/generate-sitemap.mts",
+    "build:scripts": "tsc -p tsconfig.scripts.json",
+    "build": "npm run build:scripts && react-scripts build",
+    "postbuild": "node dist-scripts/scripts/generate-sitemap.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

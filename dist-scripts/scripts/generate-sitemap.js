@@ -1,24 +1,26 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-// Use CommonJS require
-const fs = require('fs');
-const path = require('path');
-// Adjust require path relative to the compiled output location
-const { generateSitemap } = require('../src/utils/sitemap');
-// __dirname is globally available in CommonJS
+// Use ES Module Imports (will be compiled to CJS)
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+const sitemap_1 = require("../src/utils/sitemap"); // Use standard import path
+// __dirname will be available after CJS compilation
 const generateAndSaveSitemap = () => {
     console.log('Generating sitemap...');
     try {
-        const sitemapContent = generateSitemap();
-        // Use global __dirname directly
-        const publicPath = path.resolve(__dirname, '..', 'public');
-        const sitemapPath = path.join(publicPath, 'sitemap.xml');
+        const sitemapContent = (0, sitemap_1.generateSitemap)();
+        // __dirname will be correct in the CJS context post-compilation
+        const publicPath = path_1.default.resolve(__dirname, '..', 'public');
+        const sitemapPath = path_1.default.join(publicPath, 'sitemap.xml');
         // Ensure public directory exists
-        if (!fs.existsSync(publicPath)) {
-            fs.mkdirSync(publicPath, { recursive: true });
+        if (!fs_1.default.existsSync(publicPath)) {
+            fs_1.default.mkdirSync(publicPath, { recursive: true });
             console.log(`Created directory: ${publicPath}`);
         }
-        fs.writeFileSync(sitemapPath, sitemapContent);
+        fs_1.default.writeFileSync(sitemapPath, sitemapContent);
         console.log(`Sitemap successfully generated and saved to ${sitemapPath}`);
     }
     catch (error) {

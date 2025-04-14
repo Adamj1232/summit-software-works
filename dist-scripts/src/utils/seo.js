@@ -1,4 +1,7 @@
-export const BASE_URL = 'https://www.summitsoftwareworks.com';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateSchemaMarkup = exports.generateMetaTags = exports.BASE_URL = void 0;
+exports.BASE_URL = 'https://www.summitsoftwareworks.com';
 const DEFAULT_IMAGE = '/images/summit-software-og.jpg';
 const COMPANY_NAME = 'Summit Software Works';
 const DEFAULT_DESCRIPTION = 'Expert Denver-based software development specializing in professional website design, custom web applications, Web3/blockchain solutions (dapps, smart contracts), AI integration, browser extensions, and legacy application troubleshooting. We build high-performance, scalable software.';
@@ -19,8 +22,8 @@ const ORGANIZATION_SCHEMA_BASE = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
     name: COMPANY_NAME,
-    url: BASE_URL,
-    logo: `${BASE_URL}/logo192.png`,
+    url: exports.BASE_URL,
+    logo: `${exports.BASE_URL}/logo192.png`,
     description: DEFAULT_DESCRIPTION,
     telephone: PHONE_NUMBER,
     email: EMAIL,
@@ -203,40 +206,30 @@ const FAQ_SCHEMA_MAIN = {
     ]
 };
 const SCHEMA_MAPPINGS = {
-    home: {
-        ...ORGANIZATION_SCHEMA_BASE,
-        "@type": ["Organization", "LocalBusiness", "WebSite"],
-        mainEntityOfPage: {
+    home: Object.assign(Object.assign({}, ORGANIZATION_SCHEMA_BASE), { "@type": ["Organization", "LocalBusiness", "WebSite"], mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": BASE_URL
-        },
-        potentialAction: {
+            "@id": exports.BASE_URL
+        }, potentialAction: {
             "@type": "SearchAction",
-            target: `${BASE_URL}/search?q={search_term_string}`,
+            target: `${exports.BASE_URL}/search?q={search_term_string}`,
             "query-input": "required name=search_term_string"
-        },
-        hasOfferCatalog: SERVICE_SCHEMA_CATALOG.hasOfferCatalog
-    },
-    services: {
-        ...SERVICE_SCHEMA_CATALOG,
-        mainEntityOfPage: {
+        }, hasOfferCatalog: SERVICE_SCHEMA_CATALOG.hasOfferCatalog }),
+    services: Object.assign(Object.assign({}, SERVICE_SCHEMA_CATALOG), { mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${BASE_URL}/services`
-        },
-        "@additionalProperty": {
+            "@id": `${exports.BASE_URL}/services`
+        }, "@additionalProperty": {
             "@type": "FAQPage",
             mainEntity: FAQ_SCHEMA_MAIN.mainEntity.filter((q) => q.name.toLowerCase().includes('service') || q.name.toLowerCase().includes('build'))
-        }
-    },
+        } }),
     projects: {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: `Software Development Portfolio | ${COMPANY_NAME}`,
         description: `Explore projects by ${COMPANY_NAME}, showcasing expertise in web development, Web3, AI, and browser extensions built for clients in Denver and worldwide.`,
-        url: `${BASE_URL}/projects`,
+        url: `${exports.BASE_URL}/projects`,
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${BASE_URL}/projects`
+            "@id": `${exports.BASE_URL}/projects`
         },
         mainEntity: {
             "@type": "ItemList",
@@ -252,26 +245,20 @@ const SCHEMA_MAPPINGS = {
         "@type": "ContactPage",
         name: `Contact ${COMPANY_NAME} | Denver Software Development Experts`,
         description: `Get in touch with ${COMPANY_NAME} in Denver, Colorado to discuss your custom software, web development, Web3, or AI project needs.`,
-        url: `${BASE_URL}/contact`,
+        url: `${exports.BASE_URL}/contact`,
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${BASE_URL}/contact`
+            "@id": `${exports.BASE_URL}/contact`
         },
-        mainEntity: {
-            ...ORGANIZATION_SCHEMA_BASE,
-            "@type": ["Organization", "LocalBusiness"]
-        }
+        mainEntity: Object.assign(Object.assign({}, ORGANIZATION_SCHEMA_BASE), { "@type": ["Organization", "LocalBusiness"] })
     },
     'ai-assistant': {
         "@context": "https://schema.org",
         "@type": "WebPage",
         name: `AI Optimized Overview | ${COMPANY_NAME}`,
         description: `Detailed overview of ${COMPANY_NAME}'s technical capabilities, services (WebDev, Web3, AI, Mobile, Legacy Modernization), technologies (React, Node, Solidity, Python), and industry expertise for AI crawlers. Located in Denver, CO.`,
-        url: `${BASE_URL}/ai-assistant`,
-        mainEntity: {
-            ...ORGANIZATION_SCHEMA_BASE,
-            hasOfferCatalog: SERVICE_SCHEMA_CATALOG.hasOfferCatalog
-        },
+        url: `${exports.BASE_URL}/ai-assistant`,
+        mainEntity: Object.assign(Object.assign({}, ORGANIZATION_SCHEMA_BASE), { hasOfferCatalog: SERVICE_SCHEMA_CATALOG.hasOfferCatalog }),
         keywords: `${DEFAULT_KEYWORDS}, AI crawler optimization, LLM visibility, technical capabilities`,
         about: {
             "@type": "Organization",
@@ -280,9 +267,9 @@ const SCHEMA_MAPPINGS = {
         }
     },
 };
-export const generateMetaTags = (pageDetails) => {
+const generateMetaTags = (pageDetails) => {
     const { title, description = DEFAULT_DESCRIPTION, keywords = DEFAULT_KEYWORDS, url, imageUrl = DEFAULT_IMAGE } = pageDetails;
-    const fullUrl = `${BASE_URL}${url}`;
+    const fullUrl = `${exports.BASE_URL}${url}`;
     const pageTitle = `${title} | ${COMPANY_NAME}`;
     const metaDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
     const ogDescription = description.length > 200 ? description.substring(0, 197) + '...' : description;
@@ -292,11 +279,11 @@ export const generateMetaTags = (pageDetails) => {
         keywords: `${keywords}, ${LOCATION.city} software development, ${LOCATION.state} web development`,
         ogTitle: pageTitle,
         ogDescription: ogDescription,
-        ogImage: `${BASE_URL}${imageUrl}`,
+        ogImage: `${exports.BASE_URL}${imageUrl}`,
         ogUrl: fullUrl,
         twitterTitle: pageTitle,
         twitterDescription: metaDescription,
-        twitterImage: `${BASE_URL}${imageUrl}`,
+        twitterImage: `${exports.BASE_URL}${imageUrl}`,
         author: COMPANY_NAME,
         language: 'en-US',
         robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
@@ -309,9 +296,11 @@ export const generateMetaTags = (pageDetails) => {
         icbm: `${LOCATION.latitude}, ${LOCATION.longitude}`
     };
 };
-export const generateSchemaMarkup = (page, dynamicData = {}) => {
+exports.generateMetaTags = generateMetaTags;
+const generateSchemaMarkup = (page, dynamicData = {}) => {
     const baseSchema = SCHEMA_MAPPINGS[page.toLowerCase()] || ORGANIZATION_SCHEMA_BASE;
-    const finalSchema = { ...baseSchema, ...dynamicData };
+    const finalSchema = Object.assign(Object.assign({}, baseSchema), dynamicData);
     Object.keys(finalSchema).forEach(key => (finalSchema[key] === undefined || finalSchema[key] === null) && delete finalSchema[key]);
     return JSON.stringify(finalSchema, null, 2);
 };
+exports.generateSchemaMarkup = generateSchemaMarkup;
