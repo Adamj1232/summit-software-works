@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-// Note: require() might handle the import from seo.ts differently depending on tsconfig.
-// We might need to adjust this if there's a follow-up error.
-import { generateSitemap } from '../src/utils/sitemap';
+import { generateSitemap } from '../src/utils/sitemap.ts'; // Use original path
 
 // Get the directory name in an ES module context
 import { fileURLToPath } from 'url';
@@ -13,7 +11,8 @@ const generateAndSaveSitemap = () => {
   console.log('Generating sitemap...');
   try {
     const sitemapContent = generateSitemap();
-    const publicPath = path.resolve(__dirname, '..', 'public'); // Assumes script is in /scripts
+    // Use ES Module __dirname
+    const publicPath = path.resolve(__dirname, '..', 'public'); 
     const sitemapPath = path.join(publicPath, 'sitemap.xml');
 
     // Ensure public directory exists
