@@ -677,14 +677,19 @@ const Projects = () => {
               </div>
 
               {/* Content Area: Iframe or Image/Carousel */}
-              <div className="mb-6 aspect-video bg-gray-100 rounded-lg overflow-hidden">
+              <div className={`mb-6 ${selectedProject.demoUrl ? 'h-[70vh] max-w-4xl mx-auto' : 'aspect-video'} bg-gray-100 rounded-lg overflow-hidden`}>
                 {" "}
                 {/* Fixed aspect ratio container */}
                 {selectedProject.demoUrl ? (
                   <iframe
                     src={selectedProject.demoUrl}
                     title={`${selectedProject.title} Demo`}
-                    className="w-full h-full border-0"
+                    className="w-full h-full border-0 [scrollbar-width:thin] [scrollbar-color:theme(colors.mountain.400)_transparent] hover:[scrollbar-color:theme(colors.mountain.500)_transparent]"
+                    style={{
+                      // Webkit scrollbar styles
+                      '--scrollbar-width': '8px',
+                      '--scrollbar-height': '8px',
+                    }}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     sandbox="allow-scripts allow-same-origin allow-popups allow-forms" // Security sandbox
@@ -713,20 +718,40 @@ const Projects = () => {
                 )}
               </div>
 
+              {/* Add global scrollbar styles for the modal */}
+              <style jsx global>{`
+                .modal-content::-webkit-scrollbar {
+                  width: var(--scrollbar-width, 8px);
+                  height: var(--scrollbar-height, 8px);
+                }
+                
+                .modal-content::-webkit-scrollbar-track {
+                  background: transparent;
+                }
+                
+                .modal-content::-webkit-scrollbar-thumb {
+                  background-color: rgb(var(--mountain-400));
+                  border-radius: 20px;
+                  border: 2px solid transparent;
+                  background-clip: content-box;
+                  transition: background-color 0.2s ease;
+                }
+                
+                .modal-content::-webkit-scrollbar-thumb:hover {
+                  background-color: rgb(var(--mountain-500));
+                }
+                
+                /* Firefox */
+                .modal-content {
+                  scrollbar-width: thin;
+                  scrollbar-color: rgb(var(--mountain-400)) transparent;
+                }
+              `}</style>
+
               {/* Description */}
               <p className="text-mountain-600 mb-6 dark:text-mountain-300">
                 {selectedProject.description}
               </p>
-
-              {/* Tags (optional in modal, uncomment if desired) */}
-              {/* <div className="flex flex-wrap gap-2 mb-6">
-                {selectedProject.tags.map((tag, tagIndex) => (
-                   <span key={tagIndex} className="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-700">{tag}</span>
-                ))}
-              </div> */}
-
-              {/* Metrics/Stats (optional in modal, uncomment if desired) */}
-              {/* ... add metrics/stats display similar to card if needed ... */}
 
               {/* Modal Footer Actions */}
               <div className="flex flex-col sm:flex-row justify-end gap-3 pt-6 border-t border-mountain-200">
