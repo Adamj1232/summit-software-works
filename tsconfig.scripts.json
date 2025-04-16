@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist-scripts",
+    "rootDir": ".",
+    "module": "CommonJS",
+    "target": "ES2015",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": false,
+    "noEmit": false,
+    "emitDeclarationOnly": false,
+    "allowJs": false,
+    "declaration": false
+  },
+  "include": [
+    "scripts/**/*.ts",
+    "src/utils/sitemap.ts",
+    "src/utils/seo.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src"
+  ]
+} 

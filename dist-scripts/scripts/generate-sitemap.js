@@ -12,8 +12,8 @@ const generateAndSaveSitemap = () => {
     console.log('Generating sitemap...');
     try {
         const sitemapContent = (0, sitemap_1.generateSitemap)();
-        // __dirname will be correct in the CJS context post-compilation
-        const publicPath = path_1.default.resolve(__dirname, '..', 'public');
+        // Go up two levels from dist-scripts/scripts to project root
+        const publicPath = path_1.default.resolve(__dirname, '..', '..', 'public');
         const sitemapPath = path_1.default.join(publicPath, 'sitemap.xml');
         // Ensure public directory exists
         if (!fs_1.default.existsSync(publicPath)) {
