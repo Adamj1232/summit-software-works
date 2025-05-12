@@ -4,10 +4,14 @@ Allow: /
 Allow: /ai-assistant
 
 # Sitemaps
-Sitemap: https://www.summitsoftwareworks.com/sitemap.xml
+Sitemap: https://summitsoftwareworks.com/sitemap.xml
 
 # Optimize crawling
-Crawl-delay: 10
+Crawl-delay: 1
+
+# Prevent duplicate content
+Disallow: /*?
+Disallow: /*&
 
 # Allow all bots to access JavaScript and CSS
 Allow: /*.js$

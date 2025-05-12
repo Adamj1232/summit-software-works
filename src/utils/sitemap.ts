@@ -1,4 +1,4 @@
-import { BASE_URL } from './seo';
+import { BASE_URL, normalizeUrl } from './seo';
 
 interface SitemapUrl {
   loc: string;
@@ -13,13 +13,14 @@ const routes = [
   { path: '/services', changefreq: 'monthly', priority: 0.9 },
   { path: '/projects', changefreq: 'weekly', priority: 0.9 },
   { path: '/contact', changefreq: 'monthly', priority: 0.7 },
+  { path: '/ai-assistant', changefreq: 'monthly', priority: 0.8 },
 ] as const;
 
 export const generateSitemap = (): string => {
   const today = new Date().toISOString();
   
   const urls: SitemapUrl[] = routes.map(route => ({
-    loc: `${BASE_URL}${route.path}`,
+    loc: normalizeUrl(route.path),
     lastmod: today,
     changefreq: route.changefreq,
     priority: route.priority
@@ -37,7 +38,10 @@ export const generateSitemap = (): string => {
     .join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
       ${xmlUrls}
     </urlset>`;
 }; 

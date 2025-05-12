@@ -38,7 +38,7 @@ interface Location {
   longitude: string;
 }
 
-export const BASE_URL = 'https://www.summitsoftwareworks.com';
+export const BASE_URL = 'https://summitsoftwareworks.com';
 const DEFAULT_IMAGE = '/images/summit-software-og.jpg';
 const COMPANY_NAME = 'Summit Software Works';
 const DEFAULT_DESCRIPTION = 'Expert Denver-based software development specializing in professional website design, custom web applications, Web3/blockchain solutions (dapps, smart contracts), AI integration, browser extensions, and legacy application troubleshooting. We build high-performance, scalable software.';
@@ -328,6 +328,13 @@ const SCHEMA_MAPPINGS: Record<string, SchemaMarkup> = {
   },
 };
 
+// Add URL normalization function
+export const normalizeUrl = (url: string): string => {
+  // Remove trailing slashes except for root URL
+  const normalized = url === '/' ? url : url.replace(/\/+$/, '');
+  return `${BASE_URL}${normalized}`;
+};
+
 export const generateMetaTags = (
   pageDetails: {
     title: string;
@@ -345,7 +352,7 @@ export const generateMetaTags = (
     imageUrl = DEFAULT_IMAGE
   } = pageDetails;
 
-  const fullUrl = `${BASE_URL}${url}`;
+  const fullUrl = normalizeUrl(url);
   const pageTitle = `${title} | ${COMPANY_NAME}`;
   const metaDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
   const ogDescription = description.length > 200 ? description.substring(0, 197) + '...' : description;

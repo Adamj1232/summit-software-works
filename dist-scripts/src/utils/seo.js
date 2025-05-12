@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateSchemaMarkup = exports.generateMetaTags = exports.BASE_URL = void 0;
-exports.BASE_URL = 'https://www.summitsoftwareworks.com';
+exports.generateSchemaMarkup = exports.generateMetaTags = exports.normalizeUrl = exports.BASE_URL = void 0;
+exports.BASE_URL = 'https://summitsoftwareworks.com';
 const DEFAULT_IMAGE = '/images/summit-software-og.jpg';
 const COMPANY_NAME = 'Summit Software Works';
 const DEFAULT_DESCRIPTION = 'Expert Denver-based software development specializing in professional website design, custom web applications, Web3/blockchain solutions (dapps, smart contracts), AI integration, browser extensions, and legacy application troubleshooting. We build high-performance, scalable software.';
@@ -267,9 +267,16 @@ const SCHEMA_MAPPINGS = {
         }
     },
 };
+// Add URL normalization function
+const normalizeUrl = (url) => {
+    // Remove trailing slashes except for root URL
+    const normalized = url === '/' ? url : url.replace(/\/+$/, '');
+    return `${exports.BASE_URL}${normalized}`;
+};
+exports.normalizeUrl = normalizeUrl;
 const generateMetaTags = (pageDetails) => {
     const { title, description = DEFAULT_DESCRIPTION, keywords = DEFAULT_KEYWORDS, url, imageUrl = DEFAULT_IMAGE } = pageDetails;
-    const fullUrl = `${exports.BASE_URL}${url}`;
+    const fullUrl = (0, exports.normalizeUrl)(url);
     const pageTitle = `${title} | ${COMPANY_NAME}`;
     const metaDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
     const ogDescription = description.length > 200 ? description.substring(0, 197) + '...' : description;

@@ -18,43 +18,51 @@ const navItems: NavItem[] = [
   { name: 'Contact', path: '/contact', pageType: 'contact' },
 ];
 
-const NavLink = memo(({ item, isActive }: { item: NavItem; isActive: boolean }) => (
-  <Link
-    to={item.path}
-    className={`relative px-4 py-2.5 text-base font-medium transition-all duration-200
-      ${isActive 
-        ? 'text-white font-semibold' 
-        : 'text-white/90 hover:text-white'
-      }`}
-    aria-label={`Navigate to ${item.name} page`}
-    data-page-type={item.pageType}
-  >
-    <span className="relative z-10">
-      {item.name}
-      {isActive && (
-        <motion.div
-          layoutId="nav-indicator"
-          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-500"
-          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-        />
-      )}
-    </span>
-  </Link>
-));
+const NavLink = memo(({ item, isActive }: { item: NavItem; isActive: boolean }) => {
+  const normalizedPath = item.path === '/' ? '/' : item.path.replace(/\/+$/, '');
+  
+  return (
+    <Link
+      to={normalizedPath}
+      className={`relative px-4 py-2.5 text-base font-medium transition-all duration-200
+        ${isActive 
+          ? 'text-white font-semibold' 
+          : 'text-white/90 hover:text-white'
+        }`}
+      aria-label={`Navigate to ${item.name} page`}
+      data-page-type={item.pageType}
+    >
+      <span className="relative z-10">
+        {item.name}
+        {isActive && (
+          <motion.div
+            layoutId="nav-indicator"
+            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-500"
+            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+          />
+        )}
+      </span>
+    </Link>
+  );
+});
 
-const MobileNavLink = memo(({ item, isActive, onClick }: { item: NavItem; isActive: boolean; onClick: () => void }) => (
-  <Link
-    to={item.path}
-    onClick={onClick}
-    className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
-      isActive 
-        ? 'text-primary-500 bg-primary-50 dark:text-secondary-400 dark:bg-mountain-800' 
-        : 'text-mountain-600 hover:text-primary-500 hover:bg-primary-50/50 dark:text-mountain-300 dark:hover:text-secondary-400 dark:hover:bg-mountain-800/50'
-    }`}
-  >
-    {item.name}
-  </Link>
-));
+const MobileNavLink = memo(({ item, isActive, onClick }: { item: NavItem; isActive: boolean; onClick: () => void }) => {
+  const normalizedPath = item.path === '/' ? '/' : item.path.replace(/\/+$/, '');
+  
+  return (
+    <Link
+      to={normalizedPath}
+      onClick={onClick}
+      className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
+        isActive 
+          ? 'text-primary-500 bg-primary-50 dark:text-secondary-400 dark:bg-mountain-800' 
+          : 'text-mountain-600 hover:text-primary-500 hover:bg-primary-50/50 dark:text-mountain-300 dark:hover:text-secondary-400 dark:hover:bg-mountain-800/50'
+      }`}
+    >
+      {item.name}
+    </Link>
+  );
+});
 
 const GetStartedButton = memo(({ className = '' }: { className?: string }) => (
   <Link to="/contact">
