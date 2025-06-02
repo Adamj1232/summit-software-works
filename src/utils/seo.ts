@@ -2,23 +2,6 @@ interface MetaTags {
   title: string;
   description: string;
   keywords: string;
-  ogTitle: string;
-  ogDescription: string;
-  ogImage: string;
-  ogUrl: string;
-  twitterTitle: string;
-  twitterDescription: string;
-  twitterImage: string;
-  author: string;
-  language: string;
-  robots: string;
-  viewport: string;
-  themeColor: string;
-  rating: string;
-  geoRegion: string;
-  geoPlacename: string;
-  geoPosition: string;
-  icbm: string;
   canonical: string;
   og: {
     title: string;
