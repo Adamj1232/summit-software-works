@@ -22,82 +22,44 @@ const MetaTags: FC<MetaTagsProps> = memo(({
   pageType,
   schemaData
 }) => {
-  const { isDarkMode } = useTheme();
-
-  const metaTags = generateMetaTags({
-    title,
-    description,
-    keywords,
-    url,
-    imageUrl
-  });
-
-  const schemaJson = generateSchemaMarkup(pageType, schemaData);
-
-  const aiOptimizedDescription = metaTags.description;
-  const ogDescription = metaTags.ogDescription;
+  const { theme } = useTheme();
+  const metaTags = generateMetaTags({ title, description, keywords, url, imageUrl });
+  const schema = generateSchemaMarkup(pageType, schemaData);
 
   return (
     <Helmet>
-      <html lang="en" />
       <title>{metaTags.title}</title>
-      <meta name="title" content={metaTags.title} />
-      <meta name="description" content={aiOptimizedDescription} />
+      <meta name="description" content={metaTags.description} />
       <meta name="keywords" content={metaTags.keywords} />
-      <meta name="author" content={metaTags.author} />
-      <meta name="robots" content={metaTags.robots} />
-      <meta name="viewport" content={metaTags.viewport} />
-      <meta name="theme-color" content={isDarkMode ? "#0F172A" : "#F3F4F6"} />
-      <meta name="rating" content={metaTags.rating} />
-
-      <meta name="geo.region" content={metaTags.geoRegion} />
-      <meta name="geo.placename" content={metaTags.geoPlacename} />
-      <meta name="geo.position" content={metaTags.geoPosition} />
-      <meta name="ICBM" content={metaTags.icbm} />
-
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={metaTags.ogUrl} />
-      <meta property="og:title" content={metaTags.ogTitle} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:image" content={metaTags.ogImage} />
-      <meta property="og:site_name" content={metaTags.author} />
-      <meta property="og:locale" content="en_US" />
-
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={metaTags.ogUrl} />
-      <meta property="twitter:title" content={metaTags.twitterTitle} />
-      <meta property="twitter:description" content={metaTags.twitterDescription} />
-      <meta property="twitter:image" content={metaTags.twitterImage} />
-
-      <link rel="canonical" href={metaTags.ogUrl} />
-
-      <script type="application/ld+json">
-        {schemaJson}
-      </script>
-
-      <meta name="format-detection" content="telephone=no" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-      />
-      <meta name="application-name" content={metaTags.author} />
-      <meta name="msapplication-TileColor" content="#0F172A" />
-      <meta name="msapplication-config" content="/browserconfig.xml" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin=""
-      />
-      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+      
+      {/* Canonical URL */}
+      <link rel="canonical" href={metaTags.canonical} />
+      
+      {/* OpenGraph Meta Tags */}
+      <meta property="og:title" content={metaTags.og.title} />
+      <meta property="og:description" content={metaTags.og.description} />
+      <meta property="og:url" content={metaTags.og.url} />
+      <meta property="og:image" content={metaTags.og.image} />
+      <meta property="og:type" content={metaTags.og.type} />
+      <meta property="og:site_name" content={metaTags.og.siteName} />
+      
+      {/* Twitter Card Meta Tags */}
+      <meta name="twitter:card" content={metaTags.twitter.card} />
+      <meta name="twitter:title" content={metaTags.twitter.title} />
+      <meta name="twitter:description" content={metaTags.twitter.description} />
+      <meta name="twitter:image" content={metaTags.twitter.image} />
+      
+      {/* Theme Color */}
+      <meta name="theme-color" content={theme === 'dark' ? '#1a1a1a' : '#ffffff'} />
+      
+      {/* Additional SEO Meta Tags */}
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      
+      {/* Schema.org JSON-LD */}
+      <script type="application/ld+json">{schema}</script>
     </Helmet>
   );
 });
-
-MetaTags.displayName = "MetaTags";
 
 export default MetaTags;

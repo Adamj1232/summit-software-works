@@ -19,6 +19,21 @@ interface MetaTags {
   geoPlacename: string;
   geoPosition: string;
   icbm: string;
+  canonical: string;
+  og: {
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+    type: string;
+    siteName: string;
+  };
+  twitter: {
+    card: string;
+    title: string;
+    description: string;
+    image: string;
+  };
 }
 
 interface SchemaMarkup {
@@ -328,11 +343,14 @@ const SCHEMA_MAPPINGS: Record<string, SchemaMarkup> = {
   },
 };
 
-// Add URL normalization function
 export const normalizeUrl = (url: string): string => {
   // Remove trailing slashes except for root URL
   const normalized = url === '/' ? url : url.replace(/\/+$/, '');
-  return `${BASE_URL}${normalized}`;
+  // Remove index.html if present
+  const withoutIndex = normalized.replace(/\/index\.html$/, '');
+  // Ensure no double slashes
+  const cleanUrl = withoutIndex.replace(/([^:]\/)\/+/g, '$1');
+  return `${BASE_URL}${cleanUrl}`;
 };
 
 export const generateMetaTags = (
@@ -352,32 +370,27 @@ export const generateMetaTags = (
     imageUrl = DEFAULT_IMAGE
   } = pageDetails;
 
-  const fullUrl = normalizeUrl(url);
-  const pageTitle = `${title} | ${COMPANY_NAME}`;
-  const metaDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
-  const ogDescription = description.length > 200 ? description.substring(0, 197) + '...' : description;
+  const normalizedUrl = normalizeUrl(url);
 
   return {
-    title: pageTitle,
-    description: metaDescription,
-    keywords: `${keywords}, ${LOCATION.city} software development, ${LOCATION.state} web development`,
-    ogTitle: pageTitle,
-    ogDescription: ogDescription,
-    ogImage: `${BASE_URL}${imageUrl}`,
-    ogUrl: fullUrl,
-    twitterTitle: pageTitle,
-    twitterDescription: metaDescription,
-    twitterImage: `${BASE_URL}${imageUrl}`,
-    author: COMPANY_NAME,
-    language: 'en-US',
-    robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
-    viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-    themeColor: '#1a1a1a',
-    rating: 'General',
-    geoRegion: LOCATION.region,
-    geoPlacename: `${LOCATION.city}, ${LOCATION.state}`,
-    geoPosition: `${LOCATION.latitude};${LOCATION.longitude}`,
-    icbm: `${LOCATION.latitude}, ${LOCATION.longitude}`
+    title: `${title} | Summit Software Works`,
+    description,
+    keywords,
+    canonical: normalizedUrl,
+    og: {
+      title: `${title} | Summit Software Works`,
+      description,
+      url: normalizedUrl,
+      image: normalizeUrl(imageUrl),
+      type: 'website',
+      siteName: 'Summit Software Works'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Summit Software Works`,
+      description,
+      image: normalizeUrl(imageUrl)
+    }
   };
 };
 
