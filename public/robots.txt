@@ -1,9 +1,12 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Allow: /ai-assistant
 
-# Sitemaps
+# Important paths that should never be blocked
+Allow: /.well-known/acme-challenge/*
+Allow: /.well-known/vercel/*
+
+# Sitemap location
 Sitemap: https://summitsoftwareworks.com/sitemap.xml
 
 # Optimize crawling
