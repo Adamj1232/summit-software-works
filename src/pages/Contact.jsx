@@ -61,8 +61,8 @@ const Contact = () => {
           if (process.env.REACT_APP_EMAILJS_AUTO_RESPONSE_TEMPLATE_ID) {
             try {
               const autoResponseParams = {
-                to_email: formState.email,
-                to_name: formState.firstName,
+                user_email: formState.email,  // Changed from to_email to user_email
+                user_name: formState.firstName,  // Changed from to_name to user_name
                 from_name: 'Summit Software Works',
                 from_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'contact@summitsoftwareworks.com',
                 reply_to: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'contact@summitsoftwareworks.com',
