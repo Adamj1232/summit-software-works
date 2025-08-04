@@ -20,7 +20,8 @@ const FreeWebsite: FC = () => {
     businessType: '',
     currentWebsite: '',
     message: '',
-    phone: ''
+    phone: '',
+    requirements: false
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,9 +29,12 @@ const FreeWebsite: FC = () => {
   const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const inputValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    
     setFormState({
       ...formState,
-      [e.target.name]: e.target.value
+      [name]: inputValue
     });
   };
 
@@ -254,23 +258,23 @@ contact@summitsoftwareworks.com
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="bg-white rounded-2xl p-8 shadow-2xl"
+                    className="bg-white dark:bg-mountain-800 rounded-2xl p-8 shadow-2xl transition-colors duration-300"
                   >
                     <div className="text-center mb-6">
-                                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                                          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                       Claim Your FREE Professional Website
                     </h2>
-                    <p className="text-gray-600 mb-2">
+                    <p className="text-gray-600 dark:text-mountain-300 mb-2">
                       <strong>Only 5 spots remaining this month!</strong>
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 dark:text-mountain-400">
                       One free website per business. Limited time offer.
                     </p>
                     </div>
 
                     {error && (
-                      <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-                        <p className="text-red-700 text-sm">{error}</p>
+                      <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-400 dark:border-red-500 p-4 mb-6">
+                        <p className="text-red-700 dark:text-red-300 text-sm">{error}</p>
                       </div>
                     )}
 
@@ -283,7 +287,7 @@ contact@summitsoftwareworks.com
                           value={formState.firstName}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         />
                         <input
                           type="text"
@@ -292,7 +296,7 @@ contact@summitsoftwareworks.com
                           value={formState.lastName}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         />
                       </div>
 
@@ -303,7 +307,7 @@ contact@summitsoftwareworks.com
                         value={formState.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                       />
 
                       <input
@@ -312,7 +316,7 @@ contact@summitsoftwareworks.com
                         placeholder="Phone Number"
                         value={formState.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                       />
 
                       <input
@@ -322,7 +326,7 @@ contact@summitsoftwareworks.com
                         value={formState.businessName}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                       />
 
                       <select
@@ -330,9 +334,9 @@ contact@summitsoftwareworks.com
                         value={formState.businessType}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                       >
-                        <option value="">Select Business Type*</option>
+                        <option value="" className="text-gray-500 dark:text-mountain-400">Select Business Type*</option>
                         <option value="restaurant">Restaurant/Food Service</option>
                         <option value="retail">Retail/E-commerce</option>
                         <option value="healthcare">Healthcare/Medical</option>
@@ -352,7 +356,7 @@ contact@summitsoftwareworks.com
                         placeholder="Current Website (if any)"
                         value={formState.currentWebsite}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                       />
 
                       <textarea
@@ -361,13 +365,13 @@ contact@summitsoftwareworks.com
                         value={formState.message}
                         onChange={handleChange}
                         rows={4}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-gray-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200 resize-vertical"
                       />
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-gray-900 mb-2">Materials Checklist</h4>
-                        <p className="text-sm text-gray-600 mb-3">Do you have these ready? (Check our requirements section above)</p>
-                        <div className="space-y-2 text-sm text-gray-700">
+                      <div className="bg-blue-50 dark:bg-mountain-800/50 p-4 rounded-lg border border-blue-100 dark:border-mountain-700">
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Materials Checklist</h4>
+                        <p className="text-sm text-gray-600 dark:text-mountain-300 mb-3">Do you have these ready? (Check our requirements section above)</p>
+                        <div className="space-y-2 text-sm text-gray-700 dark:text-mountain-300">
                           <div>✅ Company logo (or can describe logo needs)</div>
                           <div>✅ Brand colors/preferences</div>
                           <div>✅ Business description & elevator pitch</div>
@@ -382,10 +386,12 @@ contact@summitsoftwareworks.com
                           type="checkbox"
                           id="requirements"
                           name="requirements"
+                          checked={formState.requirements}
+                          onChange={handleChange}
                           required
                           className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                         />
-                        <label htmlFor="requirements" className="ml-3 text-sm text-gray-700">
+                        <label htmlFor="requirements" className="ml-3 text-sm text-gray-700 dark:text-mountain-300">
                           I confirm that I have read and understand the <strong>requirements section above</strong>, can provide all necessary materials within 5 business days of approval, and understand this is limited to <strong>one free website per business</strong>.
                         </label>
                       </div>
@@ -400,7 +406,7 @@ contact@summitsoftwareworks.com
                         {isSubmitting ? 'Submitting Application...' : '🔥 CLAIM MY FREE WEBSITE (5 SPOTS LEFT)'}
                       </motion.button>
 
-                      <p className="text-xs text-gray-500 text-center">
+                      <p className="text-xs text-gray-500 dark:text-mountain-400 text-center">
                         No spam, no hidden costs. We'll contact you within 24 hours.
                       </p>
                     </form>
@@ -791,7 +797,7 @@ contact@summitsoftwareworks.com
         </>
       ) : (
         // Thank You Page
-        <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50 min-h-screen flex items-center">
+        <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 min-h-screen flex items-center transition-colors duration-300">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center">
               <motion.div
@@ -800,35 +806,35 @@ contact@summitsoftwareworks.com
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-6xl mb-6">🎉</div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                   Application Submitted Successfully!
                 </h1>
-                <p className="text-xl text-gray-600 mb-8">
+                <p className="text-xl text-gray-600 dark:text-mountain-300 mb-8">
                   Thank you for applying for your FREE website, {formState.firstName}! 
                   We're excited to help {formState.businessName} establish a powerful online presence.
                 </p>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg mb-8">
-                  <h2 className="text-2xl font-bold mb-6 text-gray-900">What Happens Next?</h2>
+                <div className="bg-white dark:bg-mountain-800 p-8 rounded-xl shadow-lg mb-8 border border-gray-100 dark:border-mountain-700">
+                  <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">What Happens Next?</h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
                     <div>
-                      <div className="text-blue-600 font-bold text-lg mb-2">Within 24 Hours</div>
-                      <p className="text-gray-600">Our team will review your application and contact you to schedule a brief consultation call.</p>
+                      <div className="text-blue-600 dark:text-blue-400 font-bold text-lg mb-2">Within 24 Hours</div>
+                      <p className="text-gray-600 dark:text-mountain-300">Our team will review your application and contact you to schedule a brief consultation call.</p>
                     </div>
                     <div>
-                      <div className="text-purple-600 font-bold text-lg mb-2">3-5 Days</div>
-                      <p className="text-gray-600">We'll create a custom website proposal and design mockup specifically for {formState.businessName}.</p>
+                      <div className="text-purple-600 dark:text-purple-400 font-bold text-lg mb-2">3-5 Days</div>
+                      <p className="text-gray-600 dark:text-mountain-300">We'll create a custom website proposal and design mockup specifically for {formState.businessName}.</p>
                     </div>
                     <div>
-                      <div className="text-green-600 font-bold text-lg mb-2">7-14 Days</div>
-                      <p className="text-gray-600">Your FREE professional website will be completed and ready to launch!</p>
+                      <div className="text-green-600 dark:text-green-400 font-bold text-lg mb-2">7-14 Days</div>
+                      <p className="text-gray-600 dark:text-mountain-300">Your FREE professional website will be completed and ready to launch!</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-lg mb-8">
-                  <h3 className="font-bold text-gray-900 mb-2">Important Next Steps:</h3>
-                  <ul className="text-left text-gray-700 space-y-2 max-w-md mx-auto">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mb-8 border border-blue-100 dark:border-blue-800">
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-2">Important Next Steps:</h3>
+                  <ul className="text-left text-gray-700 dark:text-mountain-300 space-y-2 max-w-md mx-auto">
                     <li>✅ Check your email for a confirmation message</li>
                     <li>✅ Watch for our call within 24 hours</li>
                     <li>✅ Prepare any logo files or content you'd like included</li>
@@ -857,9 +863,9 @@ contact@summitsoftwareworks.com
                   </Link>
                 </div>
 
-                <p className="text-sm text-gray-500 mt-8">
-                  Questions? Call us at <a href="tel:+13039182290" className="text-blue-600 hover:underline">(303) 918-2290</a> or email 
-                  <a href="mailto:contact@summitsoftwareworks.com" className="text-blue-600 hover:underline ml-1">contact@summitsoftwareworks.com</a>
+                <p className="text-sm text-gray-500 dark:text-mountain-400 mt-8">
+                  Questions? Call us at <a href="tel:+13039182290" className="text-blue-600 dark:text-blue-400 hover:underline">(303) 918-2290</a> or email 
+                  <a href="mailto:contact@summitsoftwareworks.com" className="text-blue-600 dark:text-blue-400 hover:underline ml-1">contact@summitsoftwareworks.com</a>
                 </p>
               </motion.div>
             </div>

@@ -138,7 +138,7 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
             className="text-center my-6 sm:my-12"
           >
             <h1 className="section-title">Let's Build Something Amazing Together</h1>
-            <p className="text-xl text-mountain-400 mt-4">
+            <p className="text-xl text-mountain-600 dark:text-mountain-400 mt-4">
               Schedule a free consultation to discuss how we can help you reach new heights.
             </p>
           </motion.div>
@@ -152,14 +152,14 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                 className="space-y-6"
               >
                 {error && (
-                  <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-                    <p className="text-red-700">{error}</p>
+                  <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-400 dark:border-red-500 p-4 mb-6">
+                    <p className="text-red-700 dark:text-red-300">{error}</p>
                   </div>
                 )}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="firstName" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         First name
                       </label>
                       <div className="mt-1">
@@ -171,12 +171,12 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           onChange={handleChange}
                           autoComplete="given-name"
                           required
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         />
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="lastName" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         Last name
                       </label>
                       <div className="mt-1">
@@ -188,12 +188,12 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           onChange={handleChange}
                           autoComplete="family-name"
                           required
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         />
                       </div>
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="email" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="email" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         Email
                       </label>
                       <div className="mt-1">
@@ -205,13 +205,13 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           onChange={handleChange}
                           autoComplete="email"
                           required
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         />
                       </div>
                     </div>
                     
                     <div className="sm:col-span-2">
-                      <label htmlFor="projectType" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="projectType" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         What type of project are you looking to build?
                       </label>
                       <div className="mt-1">
@@ -221,9 +221,9 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           value={formState.projectType}
                           onChange={handleChange}
                           required
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         >
-                          <option value="">Select a project type</option>
+                          <option value="" className="text-gray-500 dark:text-mountain-400">Select a project type</option>
                           <option value="free-website">🎉 FREE Website Build</option>
                           <option value="web-development">Web Development</option>
                           <option value="software-design">Software Design</option>
@@ -238,7 +238,7 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="budget" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="budget" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         Estimated Budget
                       </label>
                       <div className="mt-1">
@@ -248,9 +248,9 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           value={formState.budget}
                           onChange={handleChange}
                           required
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         >
-                          <option value="">Select a budget range</option>
+                          <option value="" className="text-gray-500 dark:text-mountain-400">Select a budget range</option>
                           <option value="free">🎉 FREE (Limited Time Offer)</option>
                           <option value="5k-10k">$5,000 - $10,000</option>
                           <option value="10k-25k">$10,000 - $25,000</option>
@@ -262,7 +262,7 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="timeline" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="timeline" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         When would you like to start?
                       </label>
                       <div className="mt-1">
@@ -272,9 +272,9 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           value={formState.timeline}
                           onChange={handleChange}
                           required
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200"
                         >
-                          <option value="">Select a timeline</option>
+                          <option value="" className="text-gray-500 dark:text-mountain-400">Select a timeline</option>
                           <option value="immediately">Immediately</option>
                           <option value="1-3-months">1-3 months</option>
                           <option value="3-6-months">3-6 months</option>
@@ -285,7 +285,7 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="message" className="block text-sm font-medium text-mountain-500">
+                      <label htmlFor="message" className="block text-sm font-medium text-mountain-700 dark:text-mountain-300">
                         Tell us about your project
                       </label>
                       <div className="mt-1">
@@ -297,7 +297,7 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                           rows={6}
                           required
                           placeholder="Please share any specific requirements, goals, or challenges you'd like to discuss..."
-                          className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
+                          className="w-full px-4 py-3 bg-white dark:bg-mountain-700 border border-mountain-300 dark:border-mountain-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-mountain-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:focus:border-secondary-400 dark:focus:ring-secondary-400 transition-colors duration-200 resize-vertical"
                         ></textarea>
                       </div>
                     </div>
@@ -322,15 +322,15 @@ P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
                 animate={{ opacity: 1 }}
                 className="text-center space-y-6 py-12"
               >
-                <h2 className="text-2xl font-bold text-mountain-800">Thank you for reaching out!</h2>
-                <p className="text-lg text-mountain-400">
+                <h2 className="text-2xl font-bold text-mountain-800 dark:text-white">Thank you for reaching out!</h2>
+                <p className="text-lg text-mountain-600 dark:text-mountain-300">
                   We've received your message and will get back to you within 24 hours with next steps for your consultation.
                 </p>
-                <div className="mt-8 p-6 bg-forest-50 rounded-lg">
-                  <h3 className="text-xl font-semibold text-forest-700 mb-4">
+                <div className="mt-8 p-6 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-100 dark:border-primary-800">
+                  <h3 className="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
                     What happens next?
                   </h3>
-                  <ul className="text-left space-y-4 text-mountain-400">
+                  <ul className="text-left space-y-4 text-mountain-600 dark:text-mountain-300">
                     <li className="flex items-start">
                       <span className="mr-3">1.</span>
                       <span>You'll receive an immediate confirmation email with helpful resources.</span>
