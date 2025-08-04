@@ -49,10 +49,14 @@ const Footer: FC = () => {
             className="md:col-span-4 flex flex-col items-center md:items-start"
           >
             <Logo size="xxxl" className="mb-6" showText />
-            <p className="text-white/80 mb-6 font-medium text-center md:text-left max-w-sm">
+            <p className="text-white/80 mb-4 font-medium text-center md:text-left max-w-sm">
               Building innovative digital solutions for businesses ready to
               reach new heights.
             </p>
+            <div className="inline-flex items-center px-4 py-2 bg-green-500/20 rounded-full text-green-300 text-sm font-medium mb-6">
+              <span className="mr-2">🎉</span>
+              Get Your FREE Website - Limited Time!
+            </div>
             {/* <div className="flex space-x-4">
               Social Media Links
               {[
@@ -82,11 +86,12 @@ const Footer: FC = () => {
             </h4>
             <ul className="space-y-3">
               {[
+                { name: "🎉 FREE Website", path: "/free-website" },
                 { name: "Web Development", path: "/services#web" },
                 { name: "Software Design", path: "/services#software" },
                 { name: "Web3 Integration", path: "/services#web3" },
+                { name: "AI Integration", path: "/services#ai" },
                 { name: "SEO Optimization", path: "/services#seo" },
-                { name: "UI/UX Design", path: "/services#mobile" },
               ].map((link, index) => (
                 <motion.li key={index} variants={itemVariants}>
                   <Link

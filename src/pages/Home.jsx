@@ -91,10 +91,21 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-mountain-200 mb-8"
+              className="text-xl text-mountain-200 mb-6"
             >
               Partner with Summit Software Works, your expert Denver software development team. We craft high-performance web applications, Web3 solutions, and AI integrations that deliver measurable results.
             </motion.p>
+
+            {/* Limited Time Free Website Offer Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full text-white font-bold text-lg mb-8 shadow-lg"
+            >
+              <span className="mr-2">🎉</span>
+              LIMITED TIME: Get Your Professional Website FREE!
+            </motion.div>
 
             {/* Add social proof metrics */}
             <motion.div
@@ -123,15 +134,15 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link to="/contact">
+              <Link to="/free-website">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white overflow-hidden group"
+                  className="relative px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg font-semibold text-white overflow-hidden group"
                 >
-                  <span className="relative z-10">Get Your Free Consultation</span>
+                  <span className="relative z-10">🚀 Get Your FREE Website</span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500"
                     initial={{ x: "100%" }}
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.3 }}
@@ -240,6 +251,120 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white dark:bg-mountain-800">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 dark:from-secondary-400 dark:to-primary-400">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-mountain-700 dark:text-mountain-200 max-w-2xl mx-auto">
+              Real results from real businesses we've helped grow
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: "Sarah Johnson",
+                title: "CEO, TechFlow Solutions",
+                image: "/api/placeholder/80/80",
+                rating: 5,
+                text: "Summit Software Works delivered exactly what we needed. Their expertise in React and Node.js helped us launch 2 months ahead of schedule. The free website offer was incredible!",
+                result: "2 months ahead of schedule"
+              },
+              {
+                name: "Mike Rodriguez",
+                title: "Founder, Denver Digital",
+                image: "/api/placeholder/80/80", 
+                rating: 5,
+                text: "Working with Summit Software Works was a game-changer. They built our entire platform and the results speak for themselves. Professional, reliable, and truly experts in their field.",
+                result: "300% increase in leads"
+              },
+              {
+                name: "Lisa Chen",
+                title: "CTO, Mountain View Analytics",
+                image: "/api/placeholder/80/80",
+                rating: 5,
+                text: "The team at Summit Software Works understood our complex requirements and delivered a solution that exceeded expectations. Their Web3 integration was flawless.",
+                result: "99.9% uptime achieved"
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-mountain-50 dark:bg-mountain-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="flex items-center mb-4">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full mr-4 border-2 border-primary-200"
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${testimonial.name}&background=3b82f6&color=ffffff&size=64`;
+                    }}
+                  />
+                  <div>
+                    <h4 className="font-semibold text-mountain-900 dark:text-white">{testimonial.name}</h4>
+                    <p className="text-sm text-mountain-600 dark:text-mountain-300">{testimonial.title}</p>
+                    <div className="flex mt-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-yellow-400 text-sm">⭐</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-mountain-700 dark:text-mountain-200 mb-4 italic">
+                  "{testimonial.text}"
+                </p>
+                <div className="text-sm font-semibold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full inline-block">
+                  ✅ {testimonial.result}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Trust Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <p className="text-lg text-mountain-600 dark:text-mountain-300 mb-8">
+              Trusted by businesses across Colorado and beyond
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              {[
+                "TechFlow Solutions",
+                "Denver Digital", 
+                "Mountain Analytics",
+                "Colorado Consulting",
+                "Summit Ventures",
+                "Boulder Tech"
+              ].map((company, index) => (
+                <div
+                  key={index}
+                  className="text-mountain-500 dark:text-mountain-400 font-medium px-4 py-2 border border-mountain-200 dark:border-mountain-600 rounded-lg"
+                >
+                  {company}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-forest-900 via-purple-900 to-mountain-900 text-white relative overflow-hidden">
         <motion.div
@@ -286,15 +411,15 @@ const Home = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
+              <Link to="/free-website">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="relative px-8 py-4 bg-white rounded-lg font-semibold overflow-hidden group"
                 >
-                  <span className="relative z-10 text-forest-800">Schedule Free Consultation</span>
+                  <span className="relative z-10 text-forest-800">🎉 Claim Your FREE Website</span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-forest-200 to-blue-200"
+                    className="absolute inset-0 bg-gradient-to-r from-green-200 to-blue-200"
                     initial={{ x: "100%" }}
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.3 }}

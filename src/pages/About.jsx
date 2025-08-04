@@ -381,15 +381,26 @@ const About = () => {
             <p className="text-xl mb-8 text-mountain-200">
               Let's discuss how we can help transform your digital vision into reality.
             </p>
-            <Link to="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-mountain-100 transition-colors"
-              >
-                Start a Conversation
-              </motion.button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/free-website">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                >
+                  🚀 Get Your FREE Website
+                </motion.button>
+              </Link>
+              <Link to="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Start a Conversation
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

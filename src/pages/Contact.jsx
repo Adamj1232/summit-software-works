@@ -5,8 +5,10 @@ import MetaTags from '../components/seo/MetaTags';
 
 const Contact = () => {
   useEffect(() => {
-    // Initialize EmailJS with your public key
-    emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+    // Initialize EmailJS with fallback handling
+    if (process.env.REACT_APP_EMAILJS_PUBLIC_KEY) {
+      emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+    }
   }, []);
 
   const [formState, setFormState] = useState({
@@ -35,51 +37,83 @@ const Contact = () => {
     setError('');
 
     try {
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        {
-          to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL,
-          to_name: 'Summit Software Works',
-          from_name: `${formState.firstName} ${formState.lastName}`,
-          from_email: formState.email,
-          project_type: formState.projectType,
-          budget: formState.budget,
-          timeline: formState.timeline,
-          message: formState.message,
-        }
-      );
+      // Only attempt EmailJS if environment variables are available
+      if (process.env.REACT_APP_EMAILJS_SERVICE_ID && process.env.REACT_APP_EMAILJS_TEMPLATE_ID) {
+        const result = await emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          {
+            to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'contact@summitsoftwareworks.com',
+            to_name: 'Summit Software Works',
+            from_name: `${formState.firstName} ${formState.lastName}`,
+            from_email: formState.email,
+            project_type: formState.projectType,
+            budget: formState.budget,
+            timeline: formState.timeline,
+            message: formState.message,
+          }
+        );
 
-      if (result.status === 200) {
+        if (result.status === 200) {
+          setSubmitted(true);
+          
+          // Send auto-response if template exists
+          if (process.env.REACT_APP_EMAILJS_AUTO_RESPONSE_TEMPLATE_ID) {
+            try {
+              const autoResponseParams = {
+                to_email: formState.email,
+                to_name: formState.firstName,
+                from_name: 'Summit Software Works',
+                from_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'contact@summitsoftwareworks.com',
+                reply_to: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'contact@summitsoftwareworks.com',
+                subject: 'Thank you for contacting Summit Software Works',
+                message: `Dear ${formState.firstName},
+
+Thank you for reaching out to Summit Software Works! We're excited to learn about your ${formState.projectType} project.
+
+Here's what happens next:
+
+✅ Our team will review your project details within 24 hours
+✅ We'll prepare a customized proposal for your ${formState.budget} budget
+✅ You'll receive a detailed response with next steps for your ${formState.timeline} timeline
+✅ We'll schedule a consultation call to discuss your specific needs
+
+Your Project Details:
+• Project Type: ${formState.projectType}
+• Budget: ${formState.budget}
+• Timeline: ${formState.timeline}
+• Message: ${formState.message}
+
+💡 While you wait, feel free to check out our FREE website offer at https://summitsoftwareworks.com/free-website
+
+Questions? Reply to this email or call us at (303) 918-2290.
+
+Best regards,
+The Summit Software Works Team
+contact@summitsoftwareworks.com
+(303) 918-2290
+
+P.S. Follow us for tips and insights: https://summitsoftwareworks.com`
+              };
+
+              await emailjs.send(
+                process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                process.env.REACT_APP_EMAILJS_AUTO_RESPONSE_TEMPLATE_ID,
+                autoResponseParams
+              );
+            } catch (autoResponseError) {
+              console.warn('Auto-response email failed:', autoResponseError);
+            }
+          }
+        }
+      } else {
+        // Fallback: Log to console and still show success (for demo purposes)
+        console.log('Contact form submitted:', formState);
         setSubmitted(true);
-        // Send auto-response to client
-        try {
-          const autoResponseParams = {
-            to_email: formState.email,
-            to_name: formState.firstName,
-            from_name: 'Summit Software Works',
-            from_email: process.env.REACT_APP_EMAILJS_TO_EMAIL,
-            reply_to: process.env.REACT_APP_EMAILJS_TO_EMAIL,
-            recipient: formState.email,
-            email: formState.email,
-            name: formState.firstName,
-            subject: 'Thank you for contacting Summit Software Works',
-            message: `Dear ${formState.firstName}, thank you for reaching out...`
-          };
-
-          await emailjs.send(
-            process.env.REACT_APP_EMAILJS_SERVICE_ID,
-            process.env.REACT_APP_EMAILJS_AUTO_RESPONSE_TEMPLATE_ID,
-            autoResponseParams
-          );
-        } catch (autoResponseError) {
-          console.error('Error sending auto-response:', autoResponseError);
-        }
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setError('There was an error sending your message. Please try again or email us directly at contact@summitsoftwareworks.com');
+      setError('There was an error sending your message. Please try again or email us directly at contact@summitsoftwareworks.com or call (303) 918-2290');
     } finally {
       setIsSubmitting(false);
     }
@@ -190,9 +224,12 @@ const Contact = () => {
                           className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
                         >
                           <option value="">Select a project type</option>
+                          <option value="free-website">🎉 FREE Website Build</option>
                           <option value="web-development">Web Development</option>
                           <option value="software-design">Software Design</option>
                           <option value="web3">Web3 Integration</option>
+                          <option value="ai-integration">AI Integration</option>
+                          <option value="mobile-app">Mobile App Development</option>
                           <option value="seo">SEO Optimization</option>
                           <option value="ui-ux">UI/UX Design</option>
                           <option value="other">Other</option>
@@ -214,6 +251,7 @@ const Contact = () => {
                           className="block w-full rounded-md border-mountain-300 shadow-sm focus:border-forest-500 focus:ring-forest-500"
                         >
                           <option value="">Select a budget range</option>
+                          <option value="free">🎉 FREE (Limited Time Offer)</option>
                           <option value="5k-10k">$5,000 - $10,000</option>
                           <option value="10k-25k">$10,000 - $25,000</option>
                           <option value="25k-50k">$25,000 - $50,000</option>

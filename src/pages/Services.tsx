@@ -425,15 +425,26 @@ const Services: FC = () => {
             <p className="text-xl mb-8 text-blue-200">
               Let's discuss how our software development expertise can achieve your specific business goals. Schedule your free consultation today.
             </p>
-            <Link to="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Book Your Free Consultation
-              </motion.button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/free-website">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white text-mountain-900 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                >
+                  🎉 Get Your FREE Website
+                </motion.button>
+              </Link>
+              <Link to="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Book Consultation
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

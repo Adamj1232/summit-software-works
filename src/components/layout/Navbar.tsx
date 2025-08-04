@@ -65,15 +65,15 @@ const MobileNavLink = memo(({ item, isActive, onClick }: { item: NavItem; isActi
 });
 
 const GetStartedButton = memo(({ className = '' }: { className?: string }) => (
-  <Link to="/contact">
+  <Link to="/free-website">
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className={`px-6 py-2.5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-lg 
-        shadow-lg shadow-primary-500/20 hover:shadow-xl hover:shadow-primary-500/30 
+      className={`px-6 py-2.5 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-lg 
+        shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 
         transition-all duration-200 focus-ring ${className}`}
     >
-      Get Started
+      🚀 FREE Website
     </motion.button>
   </Link>
 ));

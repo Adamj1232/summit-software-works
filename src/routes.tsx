@@ -10,6 +10,7 @@ const About = lazy(() => import(/* webpackChunkName: "about" */ './pages/About')
 const Projects = lazy(() => import(/* webpackChunkName: "projects" */ './pages/Projects'));
 const Contact = lazy(() => import(/* webpackChunkName: "contact" */ './pages/Contact'));
 const Services = lazy(() => import(/* webpackChunkName: "services" */ './pages/Services'));
+const FreeWebsite = lazy(() => import(/* webpackChunkName: "free-website" */ './pages/FreeWebsite'));
 
 // Wrap lazy components with Suspense and ErrorBoundary
 const withSuspense = (Component: React.LazyExoticComponent<any>) => (
@@ -44,6 +45,10 @@ export const routes: RouteObject[] = [
   {
     path: '/ai-assistant',
     element: <AIAssistant />
+  },
+  {
+    path: '/free-website',
+    element: withSuspense(FreeWebsite),
   },
   {
     path: '*',
