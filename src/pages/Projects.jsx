@@ -7,6 +7,7 @@ import MetaTags from "../components/seo/MetaTags";
 import gasExt1 from "../assets/projects/gas-extension/ext_screenshot.png";
 import gasExt2 from "../assets/projects/gas-extension/ext_screenshot_heat.png";
 import dt4Image from "../assets/projects/dt4.png"; // Assuming dt4.png exists here
+import captureTheGap from "../assets/projects/capture-the-gap.png";
 
 // --- Simple Carousel Component ---
 const ImageCarousel = ({ images, alt, projectColor }) => {
@@ -159,7 +160,7 @@ const ProjectCard = ({ project, onClick }) => (
       whileHover={{ y: -5 }}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="relative aspect-w-16 aspect-h-9 mb-6 rounded-lg overflow-hidden h-72">
+      <div className="relative aspect-w-16 aspect-h-9 mb-6 rounded-lg overflow-hidden h-80">
         {/* Conditional Rendering: Carousel or Single Image */}
         {Array.isArray(project.image) ? (
           <ImageCarousel
@@ -201,7 +202,9 @@ const ProjectCard = ({ project, onClick }) => (
         {project.title}
       </motion.h3>
 
-      <p className="text-mountain-500 dark:text-mountain-200 mb-4">{project.description}</p>
+      <p className="text-mountain-500 dark:text-mountain-200 mb-4">
+        {project.description}
+      </p>
 
       <div className="flex flex-wrap gap-3">
         {project.tags.map((tag, tagIndex) => {
@@ -260,9 +263,7 @@ const ProjectCard = ({ project, onClick }) => (
                 {icon && <span className="text-base leading-none">{icon}</span>}
 
                 {/* Tag text */}
-                <span
-                  className="text-sm font-medium text-mountain-700 dark:bg-mountain-200 dark:text-mountain-600"
-                >
+                <span className="text-sm font-medium text-mountain-700 dark:bg-mountain-200 dark:text-mountain-600">
                   {tag}
                 </span>
               </div>
@@ -369,6 +370,23 @@ const Projects = () => {
   }, []); // Corrected dependency array for handleMouseMove
 
   const projects = [
+    {
+      title: "Capture The Gap",
+      description:
+        "A Web3  on chain project whereby playing, you earn points that will eventually convert into ownership, while directly supporting the network’s infrastructure. Through gameplay, you’ll also explore why gas matters - not just as a fee, but as a critical signal that powers coordination across all blockchains.",
+      image: captureTheGap, // Keep single SVG for this one
+      tags: ["Web3", "Open Source", "TypeScript", "Crypto", "On-Chain", "NFT"],
+      link: "https://game.gas.network/",
+      color: "from-blue-500 to-indigo-500",
+      stats: {
+        users: "1000+",
+      },
+      metrics: [
+        "Cross chain oracle updater",
+        "Multi-Chain Gas price visualization",
+        "Mobile optimized"
+      ],
+    },
     {
       title: "Web3-Onboard: Simplified Web3 Wallet Connection",
       description:
@@ -677,7 +695,13 @@ const Projects = () => {
               </div>
 
               {/* Content Area: Iframe or Image/Carousel */}
-              <div className={`mb-6 ${selectedProject.demoUrl ? 'h-[70vh] max-w-4xl mx-auto' : 'aspect-video'} bg-gray-100 rounded-lg overflow-hidden`}>
+              <div
+                className={`mb-6 ${
+                  selectedProject.demoUrl
+                    ? "h-[70vh] max-w-4xl mx-auto"
+                    : "aspect-video"
+                } bg-gray-100 rounded-lg overflow-hidden`}
+              >
                 {" "}
                 {/* Fixed aspect ratio container */}
                 {selectedProject.demoUrl ? (
@@ -687,8 +711,8 @@ const Projects = () => {
                     className="w-full h-full border-0 [scrollbar-width:thin] [scrollbar-color:theme(colors.mountain.400)_transparent] hover:[scrollbar-color:theme(colors.mountain.500)_transparent]"
                     style={{
                       // Webkit scrollbar styles
-                      '--scrollbar-width': '8px',
-                      '--scrollbar-height': '8px',
+                      "--scrollbar-width": "8px",
+                      "--scrollbar-height": "8px",
                     }}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -724,11 +748,11 @@ const Projects = () => {
                   width: var(--scrollbar-width, 8px);
                   height: var(--scrollbar-height, 8px);
                 }
-                
+
                 .modal-content::-webkit-scrollbar-track {
                   background: transparent;
                 }
-                
+
                 .modal-content::-webkit-scrollbar-thumb {
                   background-color: rgb(var(--mountain-400));
                   border-radius: 20px;
@@ -736,11 +760,11 @@ const Projects = () => {
                   background-clip: content-box;
                   transition: background-color 0.2s ease;
                 }
-                
+
                 .modal-content::-webkit-scrollbar-thumb:hover {
                   background-color: rgb(var(--mountain-500));
                 }
-                
+
                 /* Firefox */
                 .modal-content {
                   scrollbar-width: thin;
