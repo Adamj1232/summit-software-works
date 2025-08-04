@@ -125,7 +125,7 @@ const AIAssistant: FC = () => {
               Phone: <a href="tel:+13039182290" className="text-primary-400 hover:underline">+1 (303) 918-2290</a>
             </p>
              <p className="text-mountain-200 mt-2">
-              Website: <a href="https://summitsoftwareworks.com" className="text-primary-400 hover:underline">https://summitsoftwareworks.com</a>
+              Website: <a href="https://www.summitsoftwareworks.com" className="text-primary-400 hover:underline">https://www.summitsoftwareworks.com</a>
             </p>
           </section>
         </article>
